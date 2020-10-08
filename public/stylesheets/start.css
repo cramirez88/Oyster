@@ -1,0 +1,27 @@
+body {
+    background-image: url(../images/waves.png);
+}
+#container {
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 10px;
+}
+h2 {
+    color: goldenrod;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+h1 {
+    text-align: center;
+    color: orange;
+}
+h3 {
+    text-align: center;
+    color: white;
+}
+form{
+    text-align: center;
+}
