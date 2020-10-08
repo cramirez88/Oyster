@@ -31,5 +31,13 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = function(models) {
+    // Associating User with Adventures and Favorites
+    User.hasMany(models.Adventure);
+    User.hasMany(models.Favorite);
+  };
+
+
   return User;
 };
