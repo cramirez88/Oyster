@@ -29,4 +29,14 @@ module.exports = function(app) {
     res.render("index", test);
     //res.sendFile(path.join(__dirname, "../public/members.html"));
   });
+
+  app.get("/map", (req, res)=>{
+    res.render("map");
+  });
+
+  app.get("/intro", (req, res)=>{
+    res.render("intro");
+  });
+
+
 };
