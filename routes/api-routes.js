@@ -50,4 +50,13 @@ module.exports = function(app) {
       });
     }
   });
+  
+  //Route for sending a new adventure to the db
+  app.post("/api/adventures", function(req, res) {
+    db.Adventure.create(req.body).then(function(dbAdventure) {
+      res.json(dbAdventure);
+    });
+  });
+  
+  
 };
