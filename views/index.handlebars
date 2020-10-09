@@ -1,20 +1,4 @@
 {{!-- THIS IS WHAT GETS DISPLAYED AFTER THE USER LOGS IN ON THE ROOT ROUTE --}}
-<<<<<<< christianHome
-
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-       <a class="navbar-brand" href="/search">
-        Search
-      </a>
-       <a class="navbar-brand" href="/trips">
-        Trips
-      </a>
-    </div>
-=======
 <div id="container">
     <h2>THE WORLD IS YOUR</h2>
     <img src="public/images/voy2.png" alt="A fancy aesthetic" style="border: 10; border-color: goldenrod;">
@@ -31,43 +15,13 @@
     <a class="navbar-brand" href="/logout">
       Logout
     </a>
->>>>>>> main
   </div>
 </div>
 </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-<<<<<<< christianHome
-        <h2>Welcome <span class="member-name"></span></h2>
-  <div class="col-md-12">
-
-     
-  {{#each cards}}
-    <div class="col-md-6">
-     <img src={{imagePath}} alt="">
-      <p>{{title}}</p>
-    </div>
-  
-  {{/each}}
-  </div> 
-    
-
-  
-        <div class="row">  
-          {{#each cards}}     
-        <div class="col-md-6">          </div> 
-        {{/each}}
-
-
-        {{!-- create new trip button --}}
-
-
-           
-             </div>
-=======
         <h2>Welcome <span class="{{user.email}}"></span></h2>
->>>>>>> main
       </div>
     </div>
   </div>
