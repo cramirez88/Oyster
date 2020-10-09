@@ -1,0 +1,89 @@
+<div class = "container">
+
+    <form id="new-itinerary-form">
+
+        <div class="form-group">
+
+            <label for="adventureName">Title</label>
+            <input class="form-control form-control-lg" id="itin-title" type="text" placeholder="Paris Je t'aime">
+
+        </div>
+        
+        <div class="form-group">
+
+            <label for="adventureDescription">Description</label>
+            <textarea class="form-control" id="itin-descrip" rows="3"></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="adventureName">Select Your Dates</label>
+            <input class="form-control" type="text" id="daterange" name="datefilter" value="" />
+
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+    </form>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+    //Function(s) for rendering the calendar and returning the start & end dates the user
+    $(
+        function() {
+            $('#daterange').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                cancelLabel: 'Clear'
+                } 
+            });
+
+            $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+
+            $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+                var startDate = picker.startDate.format('MM/DD/YYYY');
+                var endDate = picker.endDate.format('MM/DD/YYYY');
+                console.log(getDates(startDate,endDate));
+                console.log(picker.startDate.format('MM/DD/YYYY'));
+                console.log(picker.endDate.format('MM/DD/YYYY'));
+            });
+        }
+    );
+
+
+    //Function for capturing the date range from the calendar and rendering objects for each date within the range
+    function getDates(startDate, stopDate) {
+        var dateArray = [];
+        var currentDate = startDate;
+        var stopDate = stopDate;
+        while (currentDate <= stopDate) {    
+            dateArray.push( { date: moment(currentDate).format('MM/DD/YYYY') })
+            currentDate = moment(currentDate).add(1, 'days');
+        }
+        return dateArray;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
