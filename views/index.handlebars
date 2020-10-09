@@ -1,53 +1,20 @@
-{{!-- THIS IS WHAT GETS DISPLAYED AFTER THE USER LOGS IN ON THE ROOT ROUTE --}}
-<div id="container">
-    <h2>THE WORLD IS YOUR</h2>
-    <img src="public/images/voy2.png" alt="A fancy aesthetic" style="border: 10; border-color: goldenrod;">
-    <h1>OYSTER</h1>
-    <!-- <form>
-        <input type="text" id="fquote" name="fquote">
-    </form> -->
-  <button id="random-button" class="btn btn-primary btn-lg fa fa-question">Begin your Journey!</button> 
+{{!-- THIS IS WHAT GETS DISPLAYED AFTER THE USER LOGS IN ON THE ROOT ROUTE - VIEW OF ITINERARIES--}}
+
+
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/logout">
+        Logout
+      </a>
+    </div>
   </div>
-  <h1 class="text-center" id="random-quote"></h1>
-<nav class="navbar navbar-default">
-<div class="container-fluid">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="/logout">
-      Logout
-    </a>
-  </div>
-</div>
 </nav>
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="{{user.email}}"></span></h2>
+        <h2>WAHOO <span class="member-name">{{user.email}}</span></h2>
       </div>
     </div>
   </div>
-  <input type="checkbox" id="check">
-  <label for="check">
-      <i class="fas fa-bars" id="btn"></i>
-      <i class="fas fa-times" id="cancel"></i>
-  </label>
-  <div class="sidebar">
-      <header>Oyster</header>
-      <ul>
-          <li><a href="../public/home.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="../public/map.html"><i class="fas fa-search"></i>Search</a></li>
-          <li><a href="#"><i class="fas fa-user-tie"></i>Profile</a></li>
-          <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-      </ul>
-  </div>
-  <section class="container">
-      <div id="map"></div>
-      <div id="citysearch">
-          <form action="#">
-              <label for="place">Enter Place Here</label><br>
-              <input type="text" id="place"><br>
-              <label for="city">Enter City Here</label><br>
-              <input type="text" id="city"><br><br>
-              <button id="searchBtn">Search</button>
-          </form>
-      </div>
-<script src="https://code.jquery.com/jquery.js"></script>
