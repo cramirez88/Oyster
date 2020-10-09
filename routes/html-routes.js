@@ -38,5 +38,9 @@ module.exports = function(app) {
     res.render("intro");
   });
 
+  app.get("/create", (req, res)=>{
+    res.render("create");
+  });
+
 
 };
