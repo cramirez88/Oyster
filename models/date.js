@@ -13,16 +13,15 @@ module.exports = function(sequelize, DataTypes) {
       },
     });
   
-    
     Date.associate = function(models) {
         Date.belongsTo(models.Adventure, {
             foreignKey: {
-                allowNull: false
+              allowNull: false
             }
         });
-
+        
         Date.hasMany(models.Time, {
-            onDelete: "cascade"
+          onDelete: "cascade"
         });
     };
   

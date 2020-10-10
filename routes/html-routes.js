@@ -1,5 +1,6 @@
 // Requiring path to so we can use relative routes to our HTML files
 const path = require("path");
+const { createSecureContext } = require("tls");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
@@ -24,10 +25,8 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    console.log(req.user);
-    var test = { user: req.user}
-    res.render("index", test);
-    //res.sendFile(path.join(__dirname, "../public/members.html"));
+    var user = { user: req.user}
+    res.render("index", user);
   });
 
   app.get("/map", (req, res)=>{
@@ -38,9 +37,9 @@ module.exports = function(app) {
     res.render("intro");
   });
 
-  app.get("/create", (req, res)=>{
-    res.render("create");
+  app.get("/create", isAuthenticated, (req, res)=>{
+    var user = { user: req.user}
+    res.render("create", user);
   });
-
 
 };

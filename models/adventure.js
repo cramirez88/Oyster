@@ -5,22 +5,18 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
       },
       description: {
-      type: DataTypes.TEXT,
-      allowNull: true,
+        type: DataTypes.TEXT,
+        allowNull: true,
       }    
     });
     
     Adventure.associate = function(models) {
-       Adventure.belongsTo(models.User, {
-           foreignKey: {
-           allowNull: true
-           }
-       });
-
-       Adventure.hasMany(models.Date, {
+      Adventure.belongsTo(models.User);
+      
+      Adventure.hasMany(models.Date, {
         onDelete: "cascade"
-    });
-};
+      });
+     };
 
     return Adventure;
   };
