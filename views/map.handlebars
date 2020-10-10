@@ -1,10 +1,9 @@
 <!--HEADER-->
 <header id="masthead">
     <div class="container" id="titlehead"></div>
-        <h1>Seek the Unknown</h1>
+        <h1>Seek the Unknown</h1>   
     </div>
 </header>
-
 <!--SIDEBAR: DO NOT REMOVE-->
 <div class="container" id="sidebar">
     <h2><a href="" id="logo">OYSTER</a></h2>
@@ -16,7 +15,7 @@
         <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
-
+ 
 <!--SEARCH FORM-->
 <section class="container">
     <div id="map"></div>
@@ -30,79 +29,59 @@
         </form>
     </div>
 </section>
-
+   
 <!--MAP FUNCTIONS-->
 <script>
-var map, infoWindow;
+var map, infoWindow; 
 
 function initMap() {
-    var favorite = {
-        image: ""
-        cityName:""
-    };
     var options = {
         zoom: 8,
         center: {lat: 41.8781, lng: -87.6298}
-    }; 
+    };
+
     map = new google.maps.Map(document.getElementById('map'), options);
-    const service = new google.maps.places.PlacesService(map);
+
     var input = document.getElementById('city');
     var searchBox = new google.maps.places.SearchBox(input);
+
     map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
     });
+
     var markers = [];
+
     searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();
+
         if (places.length === 0)
             return;
-        markers.forEach(function (m) {
-            m.setMap(null); 
-            m.addListener("click".()=> {
-                favorite.cityName=m.place.city;
-            });
-        })
-        markers = [];
+
+        markers.forEach(function (m) {m.setMap(null); });
+         markers = [];
+       
         var bounds = new google.maps.LatLngBounds();
+
         places.forEach(function (p) {
             if (!p.geometry)
                 return;
+
             markers.push(new google.maps.Marker({
                 map: map,
                 title: p.name,
                 position: p.geometry.location
             }));
+           
             if (p.geometry.viewport)
                 bounds.union(p.geometry.viewport);
             else
-                bounds.extend(p.geometry.location);
-            
-            p.photos.forEach(photo => {
-                favorite.image=photo.getUrl({maxWidth:800, maxHeight: 800});
-            });
-        })
+                bounds.extend(p.geometry.location); 
+        });
+        map.fitBounds(bounds);
     });
-    map.fitBounds(bounds);
-    var request = {
-        location: map.getCenter(),
-        radius: '500',
-        query: input
-    };
-       
 }
-        
 </script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAej4V036j9e3wm8Sb57mt-DWByyDadjA&callback=initMap&libraries=places&v=weekly"
     type="text/javascript"></script>
-<!--<script>
-<button type="button" id="fav-button" class="btn btn-primary">Favorite</button>
-$(#'fav-button').on('click', function (event){
-event.preventDefault()
-})
-
-
-
-
-</script>-->
