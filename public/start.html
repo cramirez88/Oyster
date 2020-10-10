@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Oyster</title>
+</head>
+<body>
+    <div id="container">
+        <h2>THE WORLD IS YOUR</h2>
+        <img src="public/images/voy2.png" alt="A fancy aesthetic" style="border: 10; border-color: goldenrod;">
+        <h1>OYSTER</h1>
+        <!-- <form>
+            <input type="text" id="fquote" name="fquote">
+        </form> -->
+        <button id="random-button" class="btn btn-primary btn-lg fa fa-question">Begin your Journey!</button>
+    </div>
+   
+    <h1 class="text-center" id="random-quote"></h1>
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+$("#random-button").on("click", function() {
+
+var quotes = ["Adventure is worthwhile in itself. - Amelia Earheart",
+"Life is either a daring adventure or nothing. - Hellen Keller ",
+"People don’t take trips, trips take people. -John Steinbeck",
+"To live would be an awfully big adventure.– J.M. Barrie, Peter Pan",
+"There are far better things ahead than the ones we leave behind. – C.S. Lewis",
+"If we were meant to stay in one place, we’d have roots instead of feet. – Rachel Wolchin",
+"You can’t find happiness at the end of your journey if you didn’t bring it with you all along. – Katrina Mayer",
+"Life is a blank canvas, and you need to throw all the paint on it you can. – Danny Kaye",
+"The path is the goal -Mahatma Gandhi",
+"Oh, the places you’ll go. – Dr. Seus",
+"Have love, will travel. - The Sonics"
+];
+
+var ranQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+$("#random-quote").text(ranQuote);
+});
+});
+</script>
+</body>
+</html>

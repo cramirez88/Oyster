@@ -1,43 +1,42 @@
 <div class = "container">
 
-    <form id="new-itinerary-form">
+    <form id="adventure-form">
 
         <div class="form-group">
-
-            <label for="adventureName">Title</label>
-            <input class="form-control form-control-lg" id="itin-title" type="text" placeholder="Paris Je t'aime">
-
+            <label for="title">Title:</label>
+            <input placeholder="Paris Je t'aime" type="text" class="form-control form-control-lg" id="title"> 
+            <br>
+            <label for="description">Description:</label>
+            <textarea class="form-control" rows="3" id="description" ></textarea>
+            <div class="form group">
+                <label for="calendar">Select Your Dates</label>
+                <input class="form-control" type="text" id="daterange" name="datefilter" value="" />
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" id="newItSub">Submit</button>
         </div>
-        
-        <div class="form-group">
-
-            <label for="adventureDescription">Description</label>
-            <textarea class="form-control" id="itin-descrip" rows="3"></textarea>
-
-        </div>
-
-        <div class="form-group">
-
-            <label for="adventureName">Select Your Dates</label>
-            <input class="form-control" type="text" id="daterange" name="datefilter" value="" />
-
-        </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-    
     </form>
 
 </div>
 
-
-
 <script type="text/javascript">
 
-    //Function(s) for rendering the calendar and returning the start & end dates the user
+    
     $(
         function() {
+            //Functions for handling the form submission
+            var descriptionInput = $("#description");
+            var titleInput = $("#title");
+            var adForm = $("#adventure-form");
+
+            //global variables for start and end of date range
+            var startDate;
+            var endDate;
+
+            //rendering the calendar and getting date range values
             $('#daterange').daterangepicker({
                 autoUpdateInput: false,
+                parentElement: adForm,
                 locale: {
                 cancelLabel: 'Clear'
                 } 
@@ -52,38 +51,38 @@
             });
 
             $('#daterange').on('apply.daterangepicker', function(ev, picker) {
-                var startDate = picker.startDate.format('MM/DD/YYYY');
-                var endDate = picker.endDate.format('MM/DD/YYYY');
-                console.log(getDates(startDate,endDate));
-                console.log(picker.startDate.format('MM/DD/YYYY'));
-                console.log(picker.endDate.format('MM/DD/YYYY'));
+                 startDate =   picker.startDate.format('MM/DD/YYYY');
+                 endDate =   picker.endDate.format('MM/DD/YYYY');
             });
-        }
-    );
 
+            $(adForm).on("submit", handleFormSubmit);
 
-    //Function for capturing the date range from the calendar and rendering objects for each date within the range
-    function getDates(startDate, stopDate) {
-        var dateArray = [];
-        var currentDate = startDate;
-        var stopDate = stopDate;
-        while (currentDate <= stopDate) {    
-            dateArray.push( { date: moment(currentDate).format('MM/DD/YYYY') })
-            currentDate = moment(currentDate).add(1, 'days');
-        }
-        return dateArray;
-    }
+            function handleFormSubmit(event){
+                event.preventDefault();
+                if (!titleInput.val().trim() || !descriptionInput.val().trim() ) {
+                //need to add in something about the date being empty as well later
+                    return;
+                }
 
+                console.log(startDate);
+                console.log(endDate);
+            
+                var newAdventure = {
+                title: titleInput.val().trim(),
+                description: descriptionInput.val().trim(),
+                UserId: {{user.id}}
+                };
 
+                //may need to add in logic if we want to use this for updating a trip as well later on
+                submitAdventure(newAdventure);
+            }    
 
-
-
-
-
-
-
-
-
-
+            function submitAdventure(adventure){
+                $.post("api/adventures", adventure, function(){
+                    //this should be a function to direct to the next page
+                    console.log(adventure);
+                });
+            }
+    });
 
 </script>

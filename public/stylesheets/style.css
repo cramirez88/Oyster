@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
+
 body {
   background-image: url(../images/waves.png);
 }
 form.signup,
 form.login {
   margin-top: 50px;
+  color: white;
 }
 * {
   margin: 0;
@@ -11,37 +14,54 @@ form.login {
   list-style: none;
   text-decoration: none;
 }
-.sidebar {
+p {
+  color: white;
+}
+h1 {
+  padding-bottom: 20px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size-adjust: initial;
+  font-size: 80px;
+  color: #4682b4;
+  text-align: center;
+}
+
+#masthead {
   position: fixed;
-  left: -250px;
-  width: 250px;
+  height: 150px;
+  width: 85%;
+  margin-left: 15%;
+  overflow: auto;
+  background-color: white;
+  border-color: #f7cf61;
+  border: 10px solid #f7cf61;
+  overflow: hidden;
+}
+#titlehead {
+}
+#sidebar {
+  position: fixed;
+  width: 15%;
   height: 100%;
-  background: rgb(92, 202, 245);
+  background: #06b0ce ;
+  opacity: 30%;
   transition: all .5s ease;
   z-index: 1111;
 }
-.sidebar header {
-  font-size: 22px;
-  color: rgba(6, 185, 240, 0.801);
-  text-align: center;
-  line-height: 70px;
-  background: white;
-  user-select: none;
+#sidebar:hover {
+  opacity: 80%;
+  transition-timing-function: ease-in;
+  background: #044766;
 }
-.sidebar ul a {
-  display: block;
-  height: 100%;
-  width: 100%;
-  line-height: 65px;
-  font-size: 20px;
-  color: white;
-  padding-left: 40px;
-  box-sizing: border-box;
-  border-top: 1px solid rgb(255, 255, 255);
-  transition: .4s;
+
+#logo {
+  font-size: 45px;
+  background-color: white;
+  opacity: 500%;
+  border-radius: 10px;
+
 }
 ul li {
-  background: steelblue;
 }
 ul li:hover a {
   padding-left: 50px;
@@ -55,7 +75,7 @@ ul li:hover a {
 label #btn, label #cancel {
   position: absolute;
   cursor: pointer;
-  background: steelblue;
+  background: #4682b4;
   border-radius: 3px;
 } 
 label #btn {
@@ -92,7 +112,14 @@ section {
   background-size: cover;
   height: 100%;
 }
-STYLING FOR GOOGLE MAPS 
+/*LOGIN & SIGNIN PAGE*/
+#logbox, #signbox {
+  color: white;
+}
+#signuplink, #loginlink {
+  color: #f7cf61;
+}
+/*STYLING FOR GOOGLE MAPS*/
 #map {
   height: 400px;
   width: 100%;
@@ -101,7 +128,7 @@ STYLING FOR GOOGLE MAPS
   align-self: center;
   top: 150px;
 }
-STYING FOR SEARCH BUTTONS 
+/*STYING FOR SEARCH BUTTONS */
 #citysearch {
   margin-top: 200px;
   margin-left: 50px;

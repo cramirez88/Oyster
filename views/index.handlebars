@@ -1,57 +1,31 @@
 {{!-- THIS IS WHAT GETS DISPLAYED AFTER THE USER LOGS IN ON THE ROOT ROUTE - VIEW OF ITINERARIES--}}
-
-
-
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-    </div>
+<!--HEADER: DO NOT ADJUST-->
+<header id="masthead">
+  <div class="container" id="titlehead"></div>
+    <h1>MY BEST LAID PLANS</h1>   
   </div>
-</nav>
+</header>
+<!--SIDEBAR: DO NOT REMOVE-->
+<div class="container" id="sidebar">
+  <h2><a href="" id="logo">OYSTER</a></h2>
+  <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+  <ul>
+    <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+    <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+    <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  </div>
+  <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
   <div class="container">
-
-
-
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-
-        <div>
-          <h2>PLEASE KEEP THIS LINE OF TEXT FOR NOW -CODE EXAMPLE HOW TO REFERENCE FROM THE DB: ***  <span class="member-name">{{user.email}}</span> *** </h2>
-          <br>
-          <hr>
-          <p>In this file we will have different cards for the itineraries that have been created and a button to create a new itinerary</p>
-          <p> to view the intro page with the ship image <a href="https://oyster01.herokuapp.com/intro">/intro (Heroku)</a><a href="http://localhost:8080/intro">/intro (localhost)</a></p>
-          <p> to view the page with the map <a href="https://oyster01.herokuapp.com/map">/map (Heroku)</a><a href="http://localhost:8080/map">/map (localhost)</a></p>
-          <p> to view the the page where you enter details to create a new itinerary<a href="https://oyster01.herokuapp.com/create">/create (Heroku)</a><a href="http://localhost:8080/create">/create (localhost)</a></p>
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
-
-
-
-
-
-
-
-  {{!-- END OF CONTAINER   --}}
   </div>
+ <div class="container-fluid">
+  </div>
+  <div id="main-container" class="container-fluid"></div>
+<!---->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
