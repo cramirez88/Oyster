@@ -54,15 +54,13 @@
             });
 
             $(adForm).on("submit", handleFormSubmit);
-
-                        function submitAdventure(adventure){
-                $.post("api/adventures", adventure, function(){
+                function submitAdventure(adventure){
+                    $.post("api/adventures", adventure, function(){
                     //this should be a function to direct to the next page
                     console.log(adventure);
                 });
             }
 
-            //works
             function arrayToString(arr){
                 var newArr = [];
                 for(var i=0; i<arr.length; i++){
@@ -72,7 +70,6 @@
                 return newArr;
             }
 
-            //works
             function getDates(startDate, stopDate) {
                 var dateArray = [];
                 var currentDate = moment(startDate);
@@ -83,6 +80,8 @@
                 }
                 return dateArray;
             }
+
+            
 
             //works- define the function outside the form but invoke/passarray inside the form
             function dateObjArr(arr){
@@ -100,42 +99,21 @@
             function handleFormSubmit(event){
                 event.preventDefault();
                 if (!titleInput.val().trim() || !descriptionInput.val().trim() ) {
-                //need to add in something about the date being empty as well later
                     return;
                 }
-
-                //saved arrayToString(getDateArr) in a variable- works
                 var getDateArr = getDates(dateRangeArr[0], dateRangeArr[1]);
                 var dateStringArray = arrayToString(getDateArr);
-                //console.log("save date string array in a variable retrieve values: ", dateStringArray);
-                //test- save in a variable works
                 var allDateObj = dateObjArr(dateStringArray);
-                console.log(allDateObj);
+                var rangeString = dateRangeArr.toString();
+            
                 
-
                 var newAdventure = {
                 title: titleInput.val().trim(),
                 description: descriptionInput.val().trim(),
                 UserId: {{user.id}},
-                startDate: dateRangeArr[0],
-                //test
-                checkingDates: allDateObj,
-                sendingarray: dateStringArray
+                sendingarray: dateStringArray,
+                dateRange: rangeString
                 };
-
-                //works
-            //    var dateString = arrayToString(dateRangeArr);
-            //    console.log("came from string function: " + dateString);
-
-                //works
-                //var getDateArr = getDates(dateRangeArr[0], dateRangeArr[1]);
-                //console.log("came from reg date function: ", getDateArr);
-
-                //fucking works
-                //console.log("attempting to convert date array to string", arrayToString(getDateArr));
-
-
-
 
                 //may need to add in logic if we want to use this for updating a trip as well later on
                 submitAdventure(newAdventure);                

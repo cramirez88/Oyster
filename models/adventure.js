@@ -4,10 +4,14 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      dateRange: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       description: {
         type: DataTypes.TEXT,
         allowNull: true,
-      }    
+      }
     });
     
     Adventure.associate = function(models) {
