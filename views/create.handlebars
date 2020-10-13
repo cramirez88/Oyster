@@ -28,6 +28,8 @@
             var descriptionInput = $("#description");
             var titleInput = $("#title");
             var adForm = $("#adventure-form");
+            //var startDate;
+            //var endDate;
 
             //rendering the calendar and getting date range values
             $('#daterange').daterangepicker({
@@ -53,13 +55,9 @@
             $('#daterange').on('apply.daterangepicker', function(ev, picker) {
             });
 
-            $(adForm).on("submit", handleFormSubmit);
-                function submitAdventure(adventure){
-                    $.post("api/adventures", adventure, function(){
-                    //this should be a function to direct to the next page
-                    console.log(adventure);
-                });
-            }
+
+                
+            
 
             function arrayToString(arr){
                 var newArr = [];
@@ -81,9 +79,6 @@
                 return dateArray;
             }
 
-            
-
-            //works- define the function outside the form but invoke/passarray inside the form
             function dateObjArr(arr){
                 var objArr = [];
                 for(var i=0; i<arr.length; i++){
@@ -96,12 +91,14 @@
             }
 
 
-            function handleFormSubmit(event){
+            $(adForm).on("submit", function(event){
                 event.preventDefault();
                 if (!titleInput.val().trim() || !descriptionInput.val().trim() ) {
                     return;
                 }
+
                 var getDateArr = getDates(dateRangeArr[0], dateRangeArr[1]);
+                console.log(getDateArr);
                 var dateStringArray = arrayToString(getDateArr);
                 var allDateObj = dateObjArr(dateStringArray);
                 var rangeString = dateRangeArr.toString();
@@ -117,42 +114,19 @@
 
                 //may need to add in logic if we want to use this for updating a trip as well later on
                 submitAdventure(newAdventure);                
-            }    
+            });    
 
 
-
-
-
-
-            
-            
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-        
-
-
- 
-
- 
-
-
-
+            function submitAdventure(adventure){
+                    $.ajax({
+                        url:"/api/adventures",
+                        method: "POST",
+                        data: adventure
+                    }).then(function(results){
+                        console.log(results);
+					    window.location.href ="/members"
+                    });
+                };
 
 
 
