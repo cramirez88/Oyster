@@ -26,7 +26,8 @@
         <div class="row">
           <header id="masthead">
             <div class="container" id="titlehead"></div>
-              <h1>THE WORLD IS YOURS</h1>   
+              <h1>THE WORLD IS YOURS</h1>  
+              <p>{{adventure}}</p> 
             </div>
           </header>
         </div>
@@ -34,6 +35,7 @@
         <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
         <div class="row" id="primary">
           <p>EVERYTHING WE PUT ON THIS PAGE NEEDS TO BE IN HERE</p>
+          <div class = "adventure-container"></div>
         </div>
 
       </div>                
@@ -46,3 +48,29 @@
 <!---->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+
+  var adventureContainer = $(".adventure-container");
+  var userId;
+  var adventures;
+
+  getAdventures({{user.id}});
+
+  //Gets all adventures for the current user
+  function getAdventures(user){
+    userId = user;
+    $.get("/api/adventures/" + user, function(data){
+      console.log(data);
+      
+    });
+  }
+
+
+
+
+  
+
+});  
+
+</script>

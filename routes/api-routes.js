@@ -46,33 +46,59 @@ module.exports = function(app) {
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
         email: req.user.email,
-        id: req.user.id,
+        id: req.user.id
       });
     }
   });
+
+
+  app.get("/api/adventures/:id", (req, res)=>{
+    db.Adventure.findAll({
+      where: {
+        UserId: req.params.id
+      },
+      include: db.User
+    }).then(function(data) {
+      var adventures= [];
+      for (var i=0; i<data.length; i++){
+        adventureObj = {
+          UserId: data[i].UserId,
+          id: data[i].UserId,
+          title: data[i].title,
+          dateRange: data[i].dateRange,
+          description: data[i].description
+        }
+        adventures.push(adventureObj);
+      }
+      res.json(adventures);
+    });
+
+
+
+
+  });
+
+  
   
   //Route for sending a new adventure to the db
   app.post("/api/adventures", function(req, res) {
-
-    //Object holds values to create a new adventure entry
-    var newAdventure = {
-      title: req.body.title,
-      description: req.body.description,
-      UserId: req.body.UserId,
-    }
-      //DONT FUCK WITH THIS------------------------------
-
-          //capture a date from the request body
     var reqDate = req.body.startDate;
     var reqRange = req.body.checkingDates;
     var reqArray = req.body.sendingarray;
 
+    //Object holds values to create a new adventure entry
+    var newAdventure = {
+      title: req.body.title,
+      dateRange: req.body.dateRange,
+      description: req.body.description,
+      UserId: req.body.UserId
+    }
 
     //YES YOU CAN SEE THIS 
     console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqDate);
     console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqRange);
 
-//---dont fuck with this      
+ 
     db.Adventure.create(newAdventure)
         .then(function(data){ 
           var adData = data; 
@@ -107,5 +133,18 @@ module.exports = function(app) {
         });
   //end of api post
   });
-//end of exports  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //end of exports  
 };
