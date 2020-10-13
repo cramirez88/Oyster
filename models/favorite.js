@@ -28,19 +28,20 @@ module.exports = function(sequelize, DataTypes) {
     });
     
     Favorite.associate = function(models) {
-        Favorite.belongsTo(models.User, {
-            foreignKey: {
-            allowNull: false
-            }
+        // Favorite.belongsTo(models.User, {
+        //     foreignKey: {
+        //     allowNull: false
+        //     }
+        // });
+
+        Favorite.belongsTo(models.User,{
+            foreignKey: {allowNull: false}
         });
 
-        Favorite.hasMany(models.Time, {
-            onDelete: "cascade"
-            });
-    
+        Favorite.belongsTo(models.Date, {    
+            foreignKey: {allowNull: true}
+        });
 
-
-    
     };
   
     return Favorite;

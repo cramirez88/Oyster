@@ -11,12 +11,16 @@ module.exports = function(sequelize, DataTypes) {
     });
     
     Adventure.associate = function(models) {
-      Adventure.belongsTo(models.User);
-      
-      Adventure.hasMany(models.Date, {
-        onDelete: "cascade"
+      //Adventure.belongsTo(models.User);
+      Adventure.belongsTo(models.User, {            
+        foreignKey: {allowNull: false}
       });
-     };
+      
+      Adventure.hasMany(models.Date, 
+        {onDelete: "cascade"}
+      );
+
+    };
 
     return Adventure;
   };
