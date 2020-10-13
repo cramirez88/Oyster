@@ -7,7 +7,11 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Date = sequelize.define("Date", {
-      date: {
+      startDate: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
+      endDate: {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },

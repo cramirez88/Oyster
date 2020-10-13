@@ -6,20 +6,108 @@
   		<link href="/stylesheets/style.css" rel="stylesheet">
 
 		{{!-- testing below for date picker --}}
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+	
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   		<link href="/stylesheets/style.css" rel="stylesheet">
-		<script src="/public/js/create.js"></script>
-
-<!-- this made the errors about moment go away -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+		{{!-- <script src="/public/js/create.js"></script> --}}
 
 
 		<title>Oyster App</title>
 	</head>
 	<body>
 		{{{ body }}}
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+<!-- this made the errors about moment go away -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+    
+    $(function() {
+            //Functions for handling the form submission
+            var descriptionInput = $("#description");
+            var titleInput = $("#title");
+            var adForm = $("#newItSub");
+
+            //global variables for start and end of date range
+            var startDate;
+            var endDate;
+
+            //rendering the calendar and getting date range values
+            $('#daterange').daterangepicker({
+                autoUpdateInput: false,
+                parentElement: adForm,
+                locale: {
+                cancelLabel: 'Clear'
+                } 
+            });
+
+            $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+            });
+
+            $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+            });
+
+            $('#daterange').on('apply.daterangepicker', function(ev, picker) {
+                 startDate =   picker.startDate.format('MM/DD/YYYY');
+                 endDate =   picker.endDate.format('MM/DD/YYYY');
+            });
+
+            adForm.on("click", function (event){
+				
+                event.preventDefault();
+			//	alert("clicked")
+                 
+                console.log(startDate);
+                console.log(endDate);
+            
+                var newAdventure = {
+                title: titleInput.val().trim(),
+                description: descriptionInput.val().trim(),
+                UserId: {{user.id}},
+                startDate:startDate,
+                endDate:endDate
+                };
+
+
+
+                //may need to add in logic if we want to use this for updating a trip as well later on
+                submitAdventure(newAdventure);
+            })    
+
+            function submitAdventure(adventure){
+                console.log(adventure);
+
+			//	alert("clicked")
+                 $.ajax({
+                     url:"/api/adventures",
+                     method: "POST",
+                     data: adventure
+                 }).then(function(results){
+                     console.log(results);
+					 window.location.href ="/members"
+                 })
+
+               };
+                    //this should be a function to direct to the next page
+
+            
+                    
+            
+            
+
+            
+
+    });
+	</script>
 	</body>
 </html>

@@ -1,12 +1,12 @@
 <div class = "container">
 
-    <form id="adventure-form">
+    <form id="adventure-form"  >
 
         <div class="form-group">
             <label for="title">Title:</label>
             <input placeholder="Paris Je t'aime" type="text" class="form-control form-control-lg" id="title"> 
             <br>
-            <label for="description">Description:</label>
+            <label for="description">Description..:</label>
             <textarea class="form-control" rows="3" id="description" ></textarea>
             <div class="form group">
                 <label for="calendar">Select Your Dates</label>
@@ -19,70 +19,5 @@
 
 </div>
 
-<script type="text/javascript">
-
-    
-    $(
-        function() {
-            //Functions for handling the form submission
-            var descriptionInput = $("#description");
-            var titleInput = $("#title");
-            var adForm = $("#adventure-form");
-
-            //global variables for start and end of date range
-            var startDate;
-            var endDate;
-
-            //rendering the calendar and getting date range values
-            $('#daterange').daterangepicker({
-                autoUpdateInput: false,
-                parentElement: adForm,
-                locale: {
-                cancelLabel: 'Clear'
-                } 
-            });
-
-            $('#daterange').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-            });
-
-            $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
-                $(this).val('');
-            });
-
-            $('#daterange').on('apply.daterangepicker', function(ev, picker) {
-                 startDate =   picker.startDate.format('MM/DD/YYYY');
-                 endDate =   picker.endDate.format('MM/DD/YYYY');
-            });
-
-            $(adForm).on("submit", handleFormSubmit);
-
-            function handleFormSubmit(event){
-                event.preventDefault();
-                if (!titleInput.val().trim() || !descriptionInput.val().trim() ) {
-                //need to add in something about the date being empty as well later
-                    return;
-                }
-
-                console.log(startDate);
-                console.log(endDate);
-            
-                var newAdventure = {
-                title: titleInput.val().trim(),
-                description: descriptionInput.val().trim(),
-                UserId: {{user.id}}
-                };
-
-                //may need to add in logic if we want to use this for updating a trip as well later on
-                submitAdventure(newAdventure);
-            }    
-
-            function submitAdventure(adventure){
-                $.post("api/adventures", adventure, function(){
-                    //this should be a function to direct to the next page
-                    console.log(adventure);
-                });
-            }
-    });
 
 </script>

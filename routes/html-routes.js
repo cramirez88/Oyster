@@ -5,7 +5,7 @@ const { createSecureContext } = require("tls");
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
@@ -25,21 +25,49 @@ module.exports = function(app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    var user = { user: req.user}
+    var user = { user: req.user }
+    var cards = [
+      {
+        image: "",
+        city: "",
+        date: ""
+      },
+      {
+        image: "",
+        city: "",
+        date: ""
+      }
+    ];
     res.render("index", user);
   });
 
-  app.get("/map", (req, res)=>{
+  app.get("/map", (req, res) => {
     res.render("map");
   });
 
-  app.get("/intro", (req, res)=>{
+  app.get("/intro", (req, res) => {
     res.render("intro");
   });
 
-  app.get("/create", isAuthenticated, (req, res)=>{
-    var user = { user: req.user}
+  app.get("/create", isAuthenticated, (req, res) => {
+    var user = { user: req.user }
     res.render("create", user);
   });
+
+
+  app.post('/members', function (req, res) {
+    console.log(req.body);
+    console.log('Send button clicked');
+    res.render('index');
+    //alert('!');
+  });
+
+  // app.get("/itenerary", isAuthenticated, (req, res)=>{
+  //   var user = { user: req.user}
+  //   res.render("itenerary", user);
+  // });
+
+
+
 
 };
