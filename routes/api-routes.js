@@ -53,10 +53,59 @@ module.exports = function(app) {
   
   //Route for sending a new adventure to the db
   app.post("/api/adventures", function(req, res) {
-    db.Adventure.create(req.body).then(function(dbAdventure) {
-      res.json(dbAdventure);
-    });
+
+    //Object holds values to create a new adventure entry
+    var newAdventure = {
+      title: req.body.title,
+      description: req.body.description,
+      UserId: req.body.UserId,
+    }
+      //DONT FUCK WITH THIS------------------------------
+
+          //capture a date from the request body
+    var reqDate = req.body.startDate;
+    var reqRange = req.body.checkingDates;
+    var reqArray = req.body.sendingarray;
+
+
+    //YES YOU CAN SEE THIS 
+    console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqDate);
+    console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqRange);
+
+//---dont fuck with this      
+    db.Adventure.create(newAdventure)
+        .then(function(data){ 
+          var adData = data; 
+          res.json(data); 
+          return adData;
+        })
+        .then(function(adData){ 
+          for(var i=0; i<reqArray.length; i++){
+            var datval = reqArray[i];
+              var dateObj = {
+                  date: datval,
+                  am_8: "-", 
+                  am_9: "-", 
+                  am_10: "-", 
+                  am_11: "-", 
+                  pm_12: "-", 
+                  pm_1: "-", 
+                  pm_2: "-",  
+                  pm_3: "-",  
+                  pm_4: "-",
+                  pm_5: "-",  
+                  pm_6: "-",  
+                  pm_7: "-",  
+                  pm_8: "-",  
+                  pm_9: "-",  
+                  pm_10: "-",
+                  AdventureId: adData.id
+                }
+            db.Date.create(dateObj).then(function(dateData){console.log(dateData);})
+          } 
+        // //end of second then clause
+        });
+  //end of api post
   });
-  
-  
+//end of exports  
 };

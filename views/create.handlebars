@@ -29,10 +29,6 @@
             var titleInput = $("#title");
             var adForm = $("#adventure-form");
 
-            //global variables for start and end of date range
-            var startDate;
-            var endDate;
-
             //rendering the calendar and getting date range values
             $('#daterange').daterangepicker({
                 autoUpdateInput: false,
@@ -44,6 +40,10 @@
 
             $('#daterange').on('apply.daterangepicker', function(ev, picker) {
                 $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+                startDate =   picker.startDate.format('MM/DD/YYYY');
+                endDate =   picker.endDate.format('MM/DD/YYYY');
+                dateRangeArr = [startDate, endDate];
+                return dateRangeArr;
             });
 
             $('#daterange').on('cancel.daterangepicker', function(ev, picker) {
@@ -51,11 +51,51 @@
             });
 
             $('#daterange').on('apply.daterangepicker', function(ev, picker) {
-                 startDate =   picker.startDate.format('MM/DD/YYYY');
-                 endDate =   picker.endDate.format('MM/DD/YYYY');
             });
 
             $(adForm).on("submit", handleFormSubmit);
+
+                        function submitAdventure(adventure){
+                $.post("api/adventures", adventure, function(){
+                    //this should be a function to direct to the next page
+                    console.log(adventure);
+                });
+            }
+
+            //works
+            function arrayToString(arr){
+                var newArr = [];
+                for(var i=0; i<arr.length; i++){
+                    var str = arr[i].toString();
+                    newArr.push(str);
+                    }
+                return newArr;
+            }
+
+            //works
+            function getDates(startDate, stopDate) {
+                var dateArray = [];
+                var currentDate = moment(startDate);
+                var stopDate = moment(stopDate);
+                while (currentDate <= stopDate) {
+                    dateArray.push( moment(currentDate).format('MM-DD-YYYY') )
+                    currentDate = moment(currentDate).add(1, 'days');
+                }
+                return dateArray;
+            }
+
+            //works- define the function outside the form but invoke/passarray inside the form
+            function dateObjArr(arr){
+                var objArr = [];
+                for(var i=0; i<arr.length; i++){
+                    var dateObj = {
+                        date: arr[i]
+                    }
+                    objArr.push(dateObj);
+                }
+                return objArr;
+            }
+
 
             function handleFormSubmit(event){
                 event.preventDefault();
@@ -64,25 +104,80 @@
                     return;
                 }
 
-                console.log(startDate);
-                console.log(endDate);
-            
+                //saved arrayToString(getDateArr) in a variable- works
+                var getDateArr = getDates(dateRangeArr[0], dateRangeArr[1]);
+                var dateStringArray = arrayToString(getDateArr);
+                //console.log("save date string array in a variable retrieve values: ", dateStringArray);
+                //test- save in a variable works
+                var allDateObj = dateObjArr(dateStringArray);
+                console.log(allDateObj);
+                
+
                 var newAdventure = {
                 title: titleInput.val().trim(),
                 description: descriptionInput.val().trim(),
-                UserId: {{user.id}}
+                UserId: {{user.id}},
+                startDate: dateRangeArr[0],
+                //test
+                checkingDates: allDateObj,
+                sendingarray: dateStringArray
                 };
 
+                //works
+            //    var dateString = arrayToString(dateRangeArr);
+            //    console.log("came from string function: " + dateString);
+
+                //works
+                //var getDateArr = getDates(dateRangeArr[0], dateRangeArr[1]);
+                //console.log("came from reg date function: ", getDateArr);
+
+                //fucking works
+                //console.log("attempting to convert date array to string", arrayToString(getDateArr));
+
+
+
+
                 //may need to add in logic if we want to use this for updating a trip as well later on
-                submitAdventure(newAdventure);
+                submitAdventure(newAdventure);                
             }    
 
-            function submitAdventure(adventure){
-                $.post("api/adventures", adventure, function(){
-                    //this should be a function to direct to the next page
-                    console.log(adventure);
-                });
-            }
+
+
+
+
+
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+        
+
+
+ 
+
+ 
+
+
+
+
+
+
     });
 
 </script>

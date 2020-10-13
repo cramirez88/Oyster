@@ -34,13 +34,30 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
+
+    // User.belongsToMany(models.Adventure, {
+    //   allowNull: "false",
+    //   onDelete: "cascade",
+    //   through: "UserAdventure"
+    // });
+
+    // User.belongsToMany(models.Favorite, {
+    //   through: 'UserFavorite', 
+    //   onDelete: "cascade"
+    // });
+
+
+    //test
+
     User.hasMany(models.Adventure, {
-      allowNull: "false",
-      onDelete: "cascade"
+      onDelete: "cascade",
     });
+
     User.hasMany(models.Favorite, {
       onDelete: "cascade"
     });
+
+  
   };
 
   return User;
