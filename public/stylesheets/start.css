@@ -1,5 +1,6 @@
 body {
     background-image: url(../images/waves.png);
+    padding-top:65px;
 }
 #container {
     margin: 0 auto;
@@ -25,3 +26,5 @@ h3 {
 form{
     text-align: center;
 }
+
+
