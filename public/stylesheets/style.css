@@ -3,6 +3,13 @@
 body {
   background-image: url(../images/waves.png);
 }
+
+/* Addresses Masthead Overflow */
+#primary{
+  padding-top:200px;
+  padding-left:30px;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
@@ -30,7 +37,7 @@ h1 {
   position: fixed;
   height: 150px;
   width: 85%;
-  margin-left: 15%;
+  /* margin-left: 15%; */
   overflow: auto;
   background-color: white;
   border-color: #f7cf61;
@@ -134,3 +141,5 @@ section {
   margin-left: 50px;
   padding-left: 55px;
 }
+
+
