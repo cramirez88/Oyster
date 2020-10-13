@@ -1,32 +1,48 @@
 {{!-- THIS IS WHAT GETS DISPLAYED AFTER THE USER LOGS IN ON THE ROOT ROUTE - VIEW OF ITINERARIES--}}
-<!--HEADER: DO NOT ADJUST-->
-<header id="masthead">
-  <div class="container" id="titlehead"></div>
-    <h1>MY BEST LAID PLANS</h1>   
-  </div>
-</header>
-<!--SIDEBAR: DO NOT REMOVE-->
-<div class="container" id="sidebar">
-  <h2><a href="" id="logo">OYSTER</a></h2>
-  <p>Welcome <span class="member-name">{{user.id}}!</span></p>
-  <ul>
-    <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
-    <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
-    <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-    <li><a href="/logout">Logout</a></li>
-  </ul>
-  </div>
-  <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <button></button>
-      </div>
+
+
+<div class ="container-fluid">
+  <div class="row">
+
+    <!--SIDEBAR: DO NOT REMOVE-->
+    <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+      <h2><a href="" id="logo">OYSTER</a></h2>
+      <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+      <ul>
+        <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+        <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+        <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+        <li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+        <li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+      </ul>
     </div>
+
+    {{!--COLUMN FOR EVERYTHING AFTER SIDEBAR--}}
+    <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      {{!-- MAST AND BODY NEED TO BE IN ONE ROW FOR FORMATTING ON TOP OF EACHOTHER
+      NEED SEPARATE ROWS FOR MARGIN/OVERLAP --}}
+      <div class="row">
+        <!--HEADER: DO NOT ADJUST-->     
+        <div class="row">
+          <header id="masthead">
+            <div class="container" id="titlehead"></div>
+              <h1>THE WORLD IS YOURS</h1>   
+            </div>
+          </header>
+        </div>
+
+        <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
+        <div class="row" id="primary">
+          <p>EVERYTHING WE PUT ON THIS PAGE NEEDS TO BE IN HERE</p>
+        </div>
+
+      </div>                
+    </div>
+
+
   </div>
- <div class="container-fluid">
-  </div>
-  <div id="main-container" class="container-fluid"></div>
+</div>
+
 <!---->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
