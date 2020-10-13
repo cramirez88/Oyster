@@ -110,21 +110,6 @@ module.exports = function(app) {
             var datval = reqArray[i];
               var dateObj = {
                   date: datval,
-                  am_8: "-", 
-                  am_9: "-", 
-                  am_10: "-", 
-                  am_11: "-", 
-                  pm_12: "-", 
-                  pm_1: "-", 
-                  pm_2: "-",  
-                  pm_3: "-",  
-                  pm_4: "-",
-                  pm_5: "-",  
-                  pm_6: "-",  
-                  pm_7: "-",  
-                  pm_8: "-",  
-                  pm_9: "-",  
-                  pm_10: "-",
                   AdventureId: adData.id
                 }
             db.Date.create(dateObj).then(function(dateData){console.log(dateData);})
