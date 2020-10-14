@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
 body {
-  background-image: url(../images/waves.png);
+  background-image: url(../img/waves.png);
 }
 
 /* Addresses Masthead Overflow */
@@ -112,12 +112,7 @@ label #cancel {
 #check:checked ~ label #cancel {
   left: 195px;
 }
-section {
-  background: url(../images/waves.png) no-repeat; 
-  background-position: center;
-  background-size: cover;
-  height: 100%;
-}
+
 /*LOGIN & SIGNIN PAGE*/
 #logbox, #signbox {
   color: white;
@@ -125,6 +120,16 @@ section {
 #signuplink, #loginlink {
   color: #f7cf61;
 }
+/*STYLING FOR MAIN MEMBERS PAGE*/
+#plusBtn {
+  size: 100%;
+  background-color: transparent;
+  border: transparent;
+  position: absolute;
+  bottom: -450px;
+  left: 90%;
+}
+
 /*STYLING FOR ITINERARY PAGE*/
 #adInput {
   background: transparent;
@@ -184,6 +189,11 @@ section {
   transition: all .3s ease-in-out;
 }
 /*STYLING FOR GOOGLE MAPS*/
+#mapSection {
+  padding-top: 10px;
+  align-content: center;
+}
+
 #map {
   height: 400px;
   width: 100%;
@@ -192,6 +202,7 @@ section {
   align-self: center;
   top: 150px;
 }
+
 /*STYING FOR SEARCH BUTTONS */
 #citysearch {
   margin-top: 200px;

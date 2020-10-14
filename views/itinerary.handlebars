@@ -4,16 +4,17 @@
         <h1>ITINERARY</h1>   
     </div>
 </header>
-<!--SIDEBAR: DO NOT REMOVE-->
-<div class="container" id="sidebar">
-    <h2><a href="" id="logo">OYSTER</a></h2>
-    <p>Welcome <span class="member-name">{{user.email}}!</span></p>
-    <ul>
+    <!--SIDEBAR: DO NOT REMOVE-->
+   <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+      <h2><a href="/members" id="logo">OYSTER</a></h2>
+      <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+      <ul>
         <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
         <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
         <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
+        <li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+        <li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+      </ul>
 </div>
  
 <!--TIME BLOCKS-->

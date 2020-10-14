@@ -6,7 +6,17 @@ var router = express.Router();
 var oysters = require("../models");
 
 router.get("/", function(req,res){
-	res.redirect("")
+	res.redirect("/members")
+});
+
+router.get("/adventures", function(req,res){
+	adventures.selectAll(function(data){
+		var hbsObject = {
+			adventures: data
+		};
+
+		res.render("index", hbsObject);
+	})
 });
 
 //Export routes for server.js to use

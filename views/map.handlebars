@@ -5,30 +5,31 @@
     </div>
 </header>
 <!--SIDEBAR: DO NOT REMOVE-->
-<div class="container" id="sidebar">
-    <h2><a href="" id="logo">OYSTER</a></h2>
-    <p>Welcome <span class="member-name">{{user.email}}!</span></p>
-    <ul>
+<div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+      <h2><a href="/members" id="logo">OYSTER</a></h2>
+      <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+      <ul>
         <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
         <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
         <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
+        <li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+        <li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+      </ul>
 </div>
  
 <!--SEARCH FORM-->
-<section class="container">
+<div class="container" id="mapSection">
     <div id="map"></div>
     <div id="citysearch">
         <form action="#">
-            <label for="place">Enter Place Here</label><br>
-            <input type="text" id="place"><br>
+            <label for="place" >Enter Place Here</label><br>
+            <input type="text" placeholder="Cafe" id="place"><br>
             <label for="city">Enter City Here</label><br>
-            <input type="text" id="city"><br><br>
+            <input type="text" placeholder="Chicago" id="city"><br><br>
             <button id="searchBtn">Search</button>
         </form>
     </div>
-</section>
+</div>
    
 <!--MAP FUNCTIONS-->
 <script>
