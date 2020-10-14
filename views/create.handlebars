@@ -1,4 +1,41 @@
-<div class = "container">
+<div class ="container-fluid">
+  <div class="row">
+
+    <!--SIDEBAR: DO NOT REMOVE-->
+    <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+        <h2><a href="" id="logo">OYSTER</a></h2>
+        <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+        <ul class="nav nav-sidebar">
+            <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+            <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+            <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+            <li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+            <li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+        </ul>
+    </div>
+
+    {{!--COLUMN FOR EVERYTHING AFTER SIDEBAR--}}
+    <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      {{!-- MAST AND BODY NEED TO BE IN ONE ROW FOR FORMATTING ON TOP OF EACHOTHER
+      NEED SEPARATE ROWS FOR MARGIN/OVERLAP --}}
+      <div class="row">
+        <!--HEADER: DO NOT ADJUST-->     
+        <div class="row">
+          <header id="masthead">
+            <div class="container" id="titlehead">
+               <h1>THE WORLD IS YOURS</h1>  
+            </div>
+            {{!-- </div> --}}
+          </header>
+        </div>
+
+        <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
+        <div class="row" id="primary">
+
+
+
+{{!-- -------- --}}
+<div class = "col-md-6 col-md-offset-3">
 
     <form id="adventure-form">
 
@@ -18,12 +55,42 @@
     </form>
 
 </div>
+{{!-- -------- --}}
 
-<script type="text/javascript">
+        </div>
+        <i class="fas fa-plus-circle"></i>
+      </div>                
+    </div>
 
-    
-    $(
-        function() {
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        $(function() {
             //Functions for handling the form submission
             var descriptionInput = $("#description");
             var titleInput = $("#title");
@@ -54,8 +121,6 @@
             });
 
             $(adForm).on("submit", handleFormSubmit);
-
-
                 function submitAdventure(adventure){
                     $.post("api/adventures", adventure, function(){
                     //this should be a function to direct to the next page
@@ -64,7 +129,6 @@
                      console.log(results);
                      window.location.href ="/members"
                  });
-            
             }
 
             function arrayToString(arr){
@@ -87,8 +151,6 @@
                 return dateArray;
             }
 
-            
-
             //works- define the function outside the form but invoke/passarray inside the form
             function dateObjArr(arr){
                 var objArr = [];
@@ -101,7 +163,6 @@
                 return objArr;
             }
 
-
             function handleFormSubmit(event){
                 event.preventDefault();
                 if (!titleInput.val().trim() || !descriptionInput.val().trim() ) {
@@ -111,20 +172,18 @@
                 var dateStringArray = arrayToString(getDateArr);
                 var allDateObj = dateObjArr(dateStringArray);
                 var rangeString = dateRangeArr.toString();
-            
-                
                 var newAdventure = {
-                title: titleInput.val().trim(),
-                description: descriptionInput.val().trim(),
-                UserId: {{user.id}},
-                sendingarray: dateStringArray,
-                dateRange: rangeString
-                };
+                    title: titleInput.val().trim(),
+                    description: descriptionInput.val().trim(),
+                    UserId: {{user.id}},
+                    sendingarray: dateStringArray,
+                    dateRange: rangeString
+                }
 
                 //may need to add in logic if we want to use this for updating a trip as well later on
                 submitAdventure(newAdventure);                
             }    
 
-    });
+        });
 
-</script>
+    </script>

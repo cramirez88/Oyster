@@ -1,86 +1,107 @@
-<!--HEADER-->
-<header id="masthead">
-    <div class="container" id="titlehead"></div>
-        <h1>Seek the Unknown</h1>   
+<div class ="container-fluid">
+    <div class="row">
+
+        <!--SIDEBAR: DO NOT REMOVE-->
+        <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+            <h2><a href="" id="logo">OYSTER</a></h2>
+            <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+            <ul class="nav nav-sidebar">
+                <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+                <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+                <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+                <li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+                <li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+            </ul>
+        </div>
+
+        {{!--COLUMN FOR EVERYTHING AFTER SIDEBAR--}}
+        <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            {{!-- MAST AND BODY NEED TO BE IN ONE ROW FOR FORMATTING ON TOP OF EACHOTHER
+            NEED SEPARATE ROWS FOR MARGIN/OVERLAP --}}
+            <div class="row">
+                <!--HEADER: DO NOT ADJUST-->     
+                <div class="row">
+                    <header id="masthead">
+                        <div class="container" id="titlehead">
+                            <h1>SEEK THE UNKNOWN</h1>
+                        </div>
+                              
+                    </header>
+                </div>
+
+                <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
+                <div class="row container" id="primary">
+                    
+                        <div id="map"></div>
+                        <div id="citysearch">
+                            <form action="#">
+                                <label for="place">Enter Place Here</label><br>
+                                <input type="text" id="place"><br>
+                                <label for="city">Enter City Here</label><br>
+                                <input type="text" id="city"><br><br>
+                                <button id="searchBtn">Search</button>
+                            </form>
+                        </div>
+                   
+                </div>
+            </div>                
+        </div>
+
     </div>
-</header>
-<!--SIDEBAR: DO NOT REMOVE-->
-<div class="container" id="sidebar">
-    <h2><a href="" id="logo">OYSTER</a></h2>
-    <p>Welcome <span class="member-name">{{user.email}}!</span></p>
-    <ul>
-        <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
-        <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
-        <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
 </div>
- 
-<!--SEARCH FORM-->
-<section class="container">
-    <div id="map"></div>
-    <div id="citysearch">
-        <form action="#">
-            <label for="place">Enter Place Here</label><br>
-            <input type="text" id="place"><br>
-            <label for="city">Enter City Here</label><br>
-            <input type="text" id="city"><br><br>
-            <button id="searchBtn">Search</button>
-        </form>
-    </div>
-</section>
-   
-<!--MAP FUNCTIONS-->
+
+
 <script>
-var map, infoWindow; 
+    var map, infoWindow; 
 
-function initMap() {
-    var options = {
-        zoom: 8,
-        center: {lat: 41.8781, lng: -87.6298}
-    };
+    function initMap() {
+        var options = {
+            zoom: 8,
+            center: {lat: 41.8781, lng: -87.6298}
+        };
 
-    map = new google.maps.Map(document.getElementById('map'), options);
+        map = new google.maps.Map(document.getElementById('map'), options);
 
-    var input = document.getElementById('city');
-    var searchBox = new google.maps.places.SearchBox(input);
+        var input = document.getElementById('city');
+        var searchBox = new google.maps.places.SearchBox(input);
 
-    map.addListener('bounds_changed', function() {
-        searchBox.setBounds(map.getBounds());
-    });
+        map.addListener('bounds_changed', function() {
+            searchBox.setBounds(map.getBounds());
+        });
 
-    var markers = [];
+        var markers = [];
 
-    searchBox.addListener('places_changed', function() {
-        var places = searchBox.getPlaces();
+        searchBox.addListener('places_changed', function() {
+            var places = searchBox.getPlaces();
 
-        if (places.length === 0)
-            return;
-
-        markers.forEach(function (m) {m.setMap(null); });
-         markers = [];
-       
-        var bounds = new google.maps.LatLngBounds();
-
-        places.forEach(function (p) {
-            if (!p.geometry)
+            if (places.length === 0)
                 return;
 
-            markers.push(new google.maps.Marker({
-                map: map,
-                title: p.name,
-                position: p.geometry.location
-            }));
-           
-            if (p.geometry.viewport)
-                bounds.union(p.geometry.viewport);
-            else
-                bounds.extend(p.geometry.location); 
+            markers.forEach(function (m) {m.setMap(null); });
+            markers = [];
+        
+            var bounds = new google.maps.LatLngBounds();
+
+            places.forEach(function (p) {
+                if (!p.geometry)
+                    return;
+
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    title: p.name,
+                    position: p.geometry.location
+                }));
+            
+                if (p.geometry.viewport)
+                    bounds.union(p.geometry.viewport);
+                else
+                    bounds.extend(p.geometry.location); 
+            });
+            map.fitBounds(bounds);
         });
-        map.fitBounds(bounds);
-    });
-}
+    }
 </script>
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAej4V036j9e3wm8Sb57mt-DWByyDadjA&callback=initMap&libraries=places&v=weekly"
