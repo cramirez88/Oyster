@@ -54,11 +54,17 @@
             });
 
             $(adForm).on("submit", handleFormSubmit);
+
+
                 function submitAdventure(adventure){
                     $.post("api/adventures", adventure, function(){
                     //this should be a function to direct to the next page
                     console.log(adventure);
-                });
+                }).then(function(results){
+                     console.log(results);
+                     window.location.href ="/members"
+                 });
+            
             }
 
             function arrayToString(arr){
@@ -118,43 +124,6 @@
                 //may need to add in logic if we want to use this for updating a trip as well later on
                 submitAdventure(newAdventure);                
             }    
-
-
-
-
-
-
-            
-            
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-        
-
-
- 
-
- 
-
-
-
-
-
 
     });
 
