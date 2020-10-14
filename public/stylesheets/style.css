@@ -126,7 +126,7 @@ section {
   color: #f7cf61;
 }
 /*STYLING FOR ITINERARY PAGE*/
-p {
+#adInput {
   background: transparent;
   border: none;
   resize: none;
@@ -136,13 +136,16 @@ p {
   text-align: center;
 }
 
-.description{
+.adventure{
   white-space: pre-wrap;
 }
 
 .time-block{
   text-align: center;
   border-radius: 15px;
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;
 }
 
 .title-block{
@@ -152,20 +155,9 @@ p {
   text-align: center;
 }
 
-h2 {
+#dayTitle {
   text-align: center;
   padding-left: 45%;
-}
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
-}
-
-.row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
 }
 
 .hour {
