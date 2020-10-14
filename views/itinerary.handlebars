@@ -1,0 +1,78 @@
+<!--HEADER-->
+<header id="masthead">
+    <div class="container" id="titlehead"></div>
+        <h1>Itinerary</h1>   
+    </div>
+</header>
+<!--SIDEBAR: DO NOT REMOVE-->
+<div class="container" id="sidebar">
+    <h2><a href="" id="logo">OYSTER</a></h2>
+    <p>Welcome <span class="member-name">{{user.email}}!</span></p>
+    <ul>
+        <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+        <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+        <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</div>
+ 
+<!--TIME BLOCKS-->
+{{#each day}}
+    <div class="container">
+        <div id="title" class="row title-block">
+            <h2>{{day}}</h2>
+        </div>
+        <div id="9" class="row time-block">
+            <div class="col-md-1 hour">9AM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="10" class="row time-block">
+            <div class="col-md-1 hour">10AM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="11" class="row time-block">
+            <div class="col-md-1 hour">11AM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="12" class="row time-block">
+            <div class="col-md-1 hour">12PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="13" class="row time-block">
+            <div class="col-md-1 hour">1PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="14" class="row time-block">
+            <div class="col-md-1 hour">2PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="15" class="row time-block">
+            <div class="col-md-1 hour">3PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="16" class="row time-block">
+            <div class="col-md-1 hour">4PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="17" class="row time-block">
+            <div class="col-md-1 hour">5PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="18" class="row time-block">
+            <div class="col-md-1 hour">6PM</div>
+                <p class="col-md-10 description" placeholder="Add an adventure!">{{adventure}}</p>
+            <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+{{/each}}
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

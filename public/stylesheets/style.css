@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
 body {
-  background-image: url(../images/waves.png);
+  background-image: url(../images/waves.png) no-repeat;
 }
 
 /* Addresses Masthead Overflow */
@@ -44,8 +44,7 @@ h1 {
   border: 10px solid #f7cf61;
   overflow: hidden;
 }
-#titlehead {
-}
+
 #sidebar {
   position: fixed;
   width: 15%;
@@ -125,6 +124,72 @@ section {
 }
 #signuplink, #loginlink {
   color: #f7cf61;
+}
+/*STYLING FOR ITINERARY PAGE*/
+p {
+  background: transparent;
+  border: none;
+  resize: none;
+  color: white;
+  border-left: 1px solid white;
+  padding: 10px;
+  text-align: center;
+}
+
+.description{
+  white-space: pre-wrap;
+}
+
+.time-block{
+  text-align: center;
+  border-radius: 15px;
+}
+
+.title-block{
+  text-align: center;
+  background-color: #f7cf61;
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  padding-left: 45%;
+}
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;;
+}
+
+.row {
+  white-space: pre-wrap;
+  height: 80px;
+  border-top: 1px solid white;;
+}
+
+.hour {
+  background-color: #f7cf61;
+  color: white;
+  border-top: 1px dashed #f7cf61;
+}
+
+.addBtn {
+  border-left: 1px solid white;
+  border-top-right-radius: 15px transparent;
+  border-bottom-right-radius: 15px transparent;
+  background-color: #6099e4;
+  color: white;
+}
+
+.addBtn:hover {
+  background-color: #b38405;
+  color: white;
+}
+
+.addBtn i:hover {
+  font-size: 20px;
+  transition: all .3s ease-in-out;
 }
 /*STYLING FOR GOOGLE MAPS*/
 #map {
