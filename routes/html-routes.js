@@ -34,6 +34,11 @@ module.exports = function(app) {
     res.render("map");
   });
 
+  app.get("/itinerary", (req, res)=>{
+    res.render("itinerary");
+  });
+
+
   app.get("/intro", (req, res)=>{
     res.render("intro");
   });
