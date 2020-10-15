@@ -1,34 +1,34 @@
-<!--HEADER-->
-<header id="masthead">
-    <div class="container" id="titlehead"></div>
-        <h1>Seek the Unknown</h1>   
+<div class ="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="row">
+                <div class="row">
+                    <!--HEADER-->
+                    <header id="masthead">
+                        <div class="container" id="titlehead"></div>
+                            <h1>Seek the Unknown</h1>   
+                        </div>
+                    </header>
+
+                    
+                    <!--SEARCH FORM-->
+                    <div class="container" id="mapSection">
+                        <div id="map"></div>
+                        <div id="citysearch">
+                            <form action="#">
+                                <label for="place" >Enter Place Here</label><br>
+                                <input type="text" placeholder="Cafe" id="place"><br>
+                                <label for="city">Enter City Here</label><br>
+                                <input type="text" placeholder="Chicago" id="city"><br><br>
+                                <button id="searchBtn">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</header>
-<!--SIDEBAR: DO NOT REMOVE-->
-<div class="container" id="sidebar">
-    <h2><a href="" id="logo">OYSTER</a></h2>
-    <p>Welcome <span class="member-name">{{user.email}}!</span></p>
-    <ul>
-        <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
-        <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
-        <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-        <li><a href="/logout">Logout</a></li>
-    </ul>
-</div>
- 
-<!--SEARCH FORM-->
-<section class="container">
-    <div id="map"></div>
-    <div id="citysearch">
-        <form action="#">
-            <label for="place">Enter Place Here</label><br>
-            <input type="text" id="place"><br>
-            <label for="city">Enter City Here</label><br>
-            <input type="text" id="city"><br><br>
-            <button id="searchBtn">Search</button>
-        </form>
-    </div>
-</section>
+</div>        
    
 <!--MAP FUNCTIONS-->
 <script>
