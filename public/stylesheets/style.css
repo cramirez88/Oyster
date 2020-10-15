@@ -266,7 +266,7 @@ label #cancel {
   padding-top: 5%;
 }
 /*STYLING FOR GOOGLE MAPS*/
-#mapSection {
+#mapContainer {
   padding-top: 10px;
   align-content: center;
 }
