@@ -51,8 +51,25 @@ module.exports = function(app) {
       });
     }
   });
-  
+
   app.get("/members", isAuthenticated, (req, res) => {
+    db.Adventure.findAll({
+      raw: true,
+      where: {
+        UserId: req.user.id
+      },
+    }).then(function(data) {
+      var user = {
+        id: req.user.id,
+        user: req.user.email,
+        adventures: data
+      }
+      res.render("index", user);
+    });
+  });
+
+
+  app.get("/api/adventures/:id", (req, res)=>{
     db.Adventure.findAll({
       raw: true,
       where: {
