@@ -19,26 +19,50 @@ form.login {
   margin-top: 50px;
   color: white;
 }
+
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
 }
+
 p {
   color: white;
 }
+
 h1 {
   padding-bottom: 20px;
   font-family: 'Noto Sans TC', sans-serif;
   font-size-adjust: initial;
-  font-size: 80px;
+  font-size: 100px;
   color: #4682b4;
   text-align: center;
 }
 
-#startPage {
+#oyster {
+  font-size: 150px;
+}
+
+#introContainer {
+  height: 80%;
+  width: 60%;
   background-color: #f7cf61;
+  color: #f7cf61;
+  padding-top: 5%;
+  border: 10px solid #f7cf61;
+  position: relative;
+
+}
+
+#introImage {
+  border: #f7cf61;
+  position: relative;
+  padding-left: 45px;
+  align-content: center;
+  width: 500px;
+  height: 500px;
+  margin: 0px 20px 10px 0px;
 }
 
 #masthead {
