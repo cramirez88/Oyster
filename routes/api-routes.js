@@ -24,7 +24,7 @@ module.exports = function(app) {
       password: req.body.password,
     })
       .then(() => {
-        res.redirect(307, "/api/login");
+        res.redirect(307, "/api/signup");
       })
       .catch(err => {
         res.status(401).json(err);
@@ -34,7 +34,7 @@ module.exports = function(app) {
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.render("intro");
   });
 
   // Route for getting some data about our user to be used client side
@@ -68,7 +68,24 @@ module.exports = function(app) {
     });
   });
 
+  //Route for calling dates from db
+  app.get("/api/dates/:id", (req, res)=>{
+    db.Date.findAll({
+      raw: true,
+      where: {
+        UserId: req.user.id
+      },
+    }).then(function(data) {
+      var user = {
+        id: req.user.id,
+        user: req.user.email,
+        dates: data
+      }
+      res.render("itinerary", user);
+    });
+  });
 
+  //Route for calling all of the adventures saved in the db
   app.get("/api/adventures/:id", (req, res)=>{
     db.Adventure.findAll({
       raw: true,
@@ -110,7 +127,7 @@ module.exports = function(app) {
           res.json(data); 
           return adData;
         })
-        .then(function(adData){ 
+        /*.then(function(adData){ 
           for(var i=0; i<reqArray.length; i++){
             var datval = reqArray[i];
               var dateObj = {
@@ -131,13 +148,13 @@ module.exports = function(app) {
                   pm_9: "-",  
                   pm_10: "-",
                   AdventureId: adData.id
-                }
+                }*/
             db.Date.create(dateObj).then(function(dateData){console.log(dateData);})
           } 
         // //end of second then clause
-        });
+        );
   //end of api post
-  });
+  
 
 
 

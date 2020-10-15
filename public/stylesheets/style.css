@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
+
 body {
   background-image: url(../img/waves.png);
 }
 .container {
-  position: relative;
+  position: fixed;
 }
 /* Addresses Masthead Overflow */
 #primary{
@@ -18,29 +19,57 @@ form.login {
   margin-top: 50px;
   color: white;
 }
+
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
 }
+
 p {
   color: white;
 }
+
 h1 {
   padding-bottom: 20px;
   font-family: 'Noto Sans TC', sans-serif;
   font-size-adjust: initial;
-  font-size: 80px;
+  font-size: 100px;
   color: #4682b4;
   text-align: center;
 }
 
+#oyster {
+  font-size: 150px;
+}
+
+#introContainer {
+  height: 80%;
+  width: 60%;
+  background-color: #f7cf61;
+  color: #f7cf61;
+  padding-top: 5%;
+  border: 10px solid #f7cf61;
+  position: relative;
+
+}
+
+#introImage {
+  border: #f7cf61;
+  position: relative;
+  padding-left: 45px;
+  align-content: center;
+  width: 500px;
+  height: 500px;
+  margin: 0px 20px 10px 0px;
+}
+
 #masthead {
-  position: fixed;
+  position: relative;
   height: 150px;
-  width: 85%;
-  /* margin-left: 15%; */
+  width: 100%;
+  margin-left: 15%
   overflow: auto;
   background-color: white;
   border-color: #f7cf61;
@@ -125,12 +154,50 @@ label #cancel {
 }
 /*STYLING FOR MAIN MEMBERS PAGE*/
 
+.card-row {
+  padding-inline-start: inherit;
+}
+
+.card {
+  border: 10px solid #f7cf61;
+  border-radius: 15px;
+  width: 30%;
+  height: 40%;
+  font-size: 30px;
+  text-align: center;
+  position: relative;
+}
+
+.card-body {
+  background-color:  #044766;
+  font-size: 20px;
+}
+
+.card-title {
+  font-size: 30px;
+  color: #06b0ce
+}
+
+.card-description {
+
+}
+
+#card-section {
+  padding-top: 100px;
+}
+
+#plus {
+  position: fixed;
+  bottom: -350px;
+  left: 80%;
+}
+
 #plusBtn {
+  position: fixed;
   size: 100%;
   background-color: transparent;
   border: transparent;
-  position: absolute;
-  bottom: -400px;
+  bottom: 50px;
   left: 90%;
 }
 
@@ -196,7 +263,7 @@ label #cancel {
 #createContainer {
   width: 60%;
   color: #f7cf61;
-  padding-top: 25%;
+  padding-top: 5%;
 }
 /*STYLING FOR GOOGLE MAPS*/
 #mapSection {

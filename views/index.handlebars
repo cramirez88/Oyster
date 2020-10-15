@@ -17,23 +17,24 @@
 
         <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
         <!--EVERYTHING WE PUT ON THIS PAGE NEEDS TO BE IN HERE-->
-        <div class="row" id="primary">
-          <p>EVERYTHING WE PUT ON THIS PAGE NEEDS TO BE IN HERE</p>
+        <div class="container-fluid" id="card-section">
             <!--BUTTON FOR CREATING NEW ADVENTURE-->
-            <div class="row" id="plus">
               <span style="font-size: xxx-large; color: #f7cf61;"><button onclick="location.href='/create'" id="plusBtn">
                 <i class="fas fa-plus-circle"></i></button>
               </span>
-            </div>
             <!--ADVENTURE CARDS APPEND HERE-->
             {{#adventures}}
-              <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title">{{this.title}}</h5>
-                  <p class="card-text">{{this.description}}</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+              <div id="card-row">
+                <div class="card">
+                  <img class="card-img-top" src="../public/img/nautic.png" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{this.description}}</p>
+                    <a href="/itinerary" class="btn btn-primary">See Your Itinerary</a>
+                  </div>
                 </div>
+              </div>
+              <br>
             {{/adventures}}
         </div>
       </div>                

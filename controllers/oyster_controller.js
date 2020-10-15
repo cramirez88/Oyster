@@ -6,7 +6,7 @@ var router = express.Router();
 var oysters = require("../models");
 
 router.get("/", function(req,res){
-	res.redirect("")
+	res.redirect("intro")
 });
 
 //Export routes for server.js to use
