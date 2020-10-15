@@ -15,12 +15,18 @@
                     <div class="container" id="mapSection">
                         <div id="map"></div>
                         <div id="citysearch">
-                            <form action="#">
-                                <label for="place" >Enter Place Here</label><br>
-                                <input type="text" placeholder="Cafe" id="place"><br>
-                                <label for="city">Enter City Here</label><br>
-                                <input type="text" placeholder="Chicago" id="city"><br><br>
-                                <button id="searchBtn">Search</button>
+                            <form id="adventure-form" action="#">
+                                <div class="form-group">
+                                    <label for="place" >Enter Place Here</label>
+                                    <input placeholder="Cafe" type="text" class="form-control form-control-lg" id="place">
+                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="city">Enter City Here</label>
+                                    <input placeholder="Chicago" type="text" class="form-control form-control-lg" id="city"> 
+                                    <br>
+                                </div>
+                                <button id="searchBtn" class="btn btn-primary">Search</button>
                             </form>
                         </div>
                     </div>
