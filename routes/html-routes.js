@@ -35,7 +35,7 @@ module.exports = function(app) {
   });
 
 
-  app.get("/intro", (req, res)=>{
+  app.get("/start", (req, res)=>{
     res.render("intro");
   });
 

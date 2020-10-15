@@ -12,10 +12,10 @@
                 </div>
 
                 <!--TIME BLOCKS-->
-                {{#each dates}}
+                {{#dates}}
                     <div class="container">
                         <div id="title" class="row title-block">
-                            <h2 id="dayTitle">{{day}}</h2>
+                            <h2 id="dayTitle">{{this.date}}</h2>
                         </div>
                         <div id="9" class="row time-block">
                             <div class="col-md-1 hour">9AM</div>
@@ -69,10 +69,10 @@
                             <button id="addBtn" class="btn addBtn col-md-1"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
+                {{/dates}}
             </div>
         </div>
     </div>
 </div>
-    {{/each}}
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
