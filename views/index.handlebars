@@ -1,22 +1,6 @@
 {{!-- THIS IS WHAT GETS DISPLAYED AFTER THE USER LOGS IN ON THE ROOT ROUTE - VIEW OF ITINERARIES--}}
-
-
 <div class ="container-fluid">
   <div class="row">
-
-    <!--SIDEBAR: DO NOT REMOVE-->
-    <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
-      <h2><a href="" id="logo">OYSTER</a></h2>
-      <p>Welcome <span class="member-name">{{user.email}}!</span></p>
-      <ul>
-        <li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
-        <li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
-        <li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-        <li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
-        <li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
-      </ul>
-    </div>
-
     {{!--COLUMN FOR EVERYTHING AFTER SIDEBAR--}}
     <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
       {{!-- MAST AND BODY NEED TO BE IN ONE ROW FOR FORMATTING ON TOP OF EACHOTHER
@@ -26,22 +10,35 @@
         <div class="row">
           <header id="masthead">
             <div class="container" id="titlehead"></div>
-              <h1>THE WORLD IS YOURS</h1>  
-              <p>{{adventure}}</p> 
+              <h1>THE WORLD IS YOURS</h1>
             </div>
           </header>
         </div>
 
         <!--MODULES SHOULD POPULATE BELOW: *WIP*-->
+        <!--EVERYTHING WE PUT ON THIS PAGE NEEDS TO BE IN HERE-->
         <div class="row" id="primary">
           <p>EVERYTHING WE PUT ON THIS PAGE NEEDS TO BE IN HERE</p>
-          <div class = "adventure-container"></div>
+            <!--BUTTON FOR CREATING NEW ADVENTURE-->
+            <div class="row" id="plus">
+              <span style="font-size: xxx-large; color: #f7cf61;"><button onclick="location.href='/create'" id="plusBtn">
+                <i class="fas fa-plus-circle"></i></button>
+              </span>
+            </div>
+            <!--ADVENTURE CARDS APPEND HERE-->
+            {{#each adventures}}
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{this.title}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              {{/each}}
         </div>
-        <i class="fas fa-plus-circle"></i>
       </div>                
     </div>
-
-
   </div>
 </div>
 
@@ -66,10 +63,6 @@ $(document).ready(() => {
     });
   }
 
-
-
-
-  
 
 });  
 
