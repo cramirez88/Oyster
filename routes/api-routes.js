@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -49,6 +50,22 @@ module.exports = function(app) {
         id: req.user.id
       });
     }
+  });
+
+  app.get("/members", isAuthenticated, (req, res) => {
+    db.Adventure.findAll({
+      raw: true,
+      where: {
+        UserId: req.user.id
+      },
+    }).then(function(data) {
+      var user = {
+        id: req.user.id,
+        user: req.user.email,
+        adventures: data
+      }
+      res.render("index", user);
+    });
   });
 
 

@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
   		<link href="/stylesheets/style.css" rel="stylesheet">
-
 		{{!-- testing below for date picker --}}
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   		<link href="/stylesheets/style.css" rel="stylesheet">
 		{{!-- <script src="/public/js/create.js"></script> --}}
-
-<!-- this made the errors about moment go away -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
-
-
 		<title>Oyster App</title>
 	</head>
 	<body>
+	<!--SIDEBAR: DO NOT REMOVE-->
+	<div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+		<h2><a href="/members" id="logo">OYSTER</a></h2>
+		<p>Welcome <span class="member-name">{{user.email}}!</span></p>
+		<ul class="nav nav-sidebar">
+		<li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+		<li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+		<li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+		<li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+		<li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+		</ul>
+	</div>
+		<!--BODY-->
 		{{{ body }}}
 	</body>
+	<!-- this made the errors about moment go away -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 </html>
