@@ -40,7 +40,7 @@
                     {{!-- NEW --}}
                     <div class="row">
                         <div id= "resultsContainer">
-                            <table class="table table-hover table-sm table-bordered table-light">
+                            {{!-- <table class="table table-hover table-sm table-bordered table-light">
                                 <thead class="thead-light">
                                     <tr>
                                         <th scope="col">Business</th>
@@ -50,7 +50,7 @@
                                 </thead>
                                 <tbody class="table-striped" id = "search-results">
                                 </tbody>
-                            </table>
+                            </table> --}}
                         </div>
                     </div>
                     {{!-- END NEW --}}
@@ -78,7 +78,7 @@
         map = new google.maps.Map(document.getElementById('map'), options);
     }
 
-    var searchResults = $("#search-results");
+    var resultsContainer = $("#resultsContainer");
 
     $("#searchBtn").on("click", () => {
         var city = $("#city").val()
@@ -116,27 +116,37 @@
 
             
             function createNewRow(object){
-                var newResultTr = $("<tr>");
-                newResultTr.addClass("table-warning");
-                var resultTitle = $("<td>");
-                resultTitle.text(object.name);
-                var resultAddress = $("<td>");
-                resultAddress.text(object.address);
+//                var newResultDiv = $("div");
+//                var newResultTr = $("<tr>");
+//                newResultTr.addClass("table-warning");
+//                var resultTitle = $("<td>");
+//                resultTitle.text(object.name);
+//                var resultAddress = $("<td>");
+//                resultAddress.text(object.address);
                 //var resultFav = $("<td>");
-                var resultButton = $("<button>Add To Favorites</button>");
-                resultButton.addClass("btn btn-primary");
+                var resultButton = $("<button>+</button>");
+                resultButton.addClass("btn btn-primary favorites");
 
-                resultButton.addClass("favorites");
+//                resultButton.addClass("favorites");
 //                var resultIcon = $("<i>");
 //                resultIcon.addClass("");
 //                resultButton.innerHtml(resultIcon);     
                 //resultFav.innerHTML(resultButton);
                 
-                newResultTr.append(resultTitle);
-                newResultTr.append(resultAddress);
-                newResultTr.append(resultButton);
+//                newResultTr.append(resultTitle);
+//                newResultTr.append(resultAddress);
+//                newResultTr.append(resultButton);
                 //newResultTr.append(resultFav);
-                return newResultTr;
+//                return newResultTr;
+
+                var resultDiv = $("<div>");
+                resultDiv.append(`${object.name}  |  ${object.address} `);
+                resultDiv.append(resultButton);
+                return resultDiv;
+
+
+
+
             }
 
 
@@ -144,13 +154,13 @@
 
 
             function initializeRows(){
-                searchResults.empty();
+                resultsContainer.empty();
                 var rowsToAdd= [];
                 for(var i=0; i<venueArr.length; i++){
                     var newTRow = createNewRow(venueArr[i]);
                     rowsToAdd.push(newTRow);
                 }
-                searchResults.append(rowsToAdd);
+                resultsContainer.append(rowsToAdd);
             }
 
             
