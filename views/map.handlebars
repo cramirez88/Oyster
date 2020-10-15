@@ -40,34 +40,18 @@
                     {{!-- NEW --}}
                     <div class="row">
                         <div id= "resultsContainer">
-                            {{!-- <table class="table table-hover table-sm table-bordered table-light">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">Business</th>
-                                        <th scope="col">Address</th>
-                                         <th scope="col">Addto Favorites</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-striped" id = "search-results">
-                                </tbody>
-                            </table> --}}
                         </div>
                     </div>
-                    {{!-- END NEW --}}
                 </div>
             
             </div>
         </div>
     </div>
-</div>        
-   
+</div>  
+
+
+
 <script>
-
-
-
-
-
-
 
     var map;
     function initMap() {
@@ -79,7 +63,8 @@
     }
 
     var resultsContainer = $("#resultsContainer");
-
+    var FavoriteButton = $("button.favorite");
+  
     $("#searchBtn").on("click", () => {
         var city = $("#city").val()
         /*console.log(city);*/
@@ -113,45 +98,19 @@
             console.log(venueArr);
 
             initializeRows();
-
-            
+          
             function createNewRow(object){
-//                var newResultDiv = $("div");
-//                var newResultTr = $("<tr>");
-//                newResultTr.addClass("table-warning");
-//                var resultTitle = $("<td>");
-//                resultTitle.text(object.name);
-//                var resultAddress = $("<td>");
-//                resultAddress.text(object.address);
-                //var resultFav = $("<td>");
                 var resultButton = $("<button>+</button>");
                 resultButton.addClass("btn btn-primary favorites");
-
-//                resultButton.addClass("favorites");
-//                var resultIcon = $("<i>");
-//                resultIcon.addClass("");
-//                resultButton.innerHtml(resultIcon);     
-                //resultFav.innerHTML(resultButton);
-                
-//                newResultTr.append(resultTitle);
-//                newResultTr.append(resultAddress);
-//                newResultTr.append(resultButton);
-                //newResultTr.append(resultFav);
-//                return newResultTr;
-
-                var resultDiv = $("<div>");
+                var name = object.name;
+                $(resultButton).attr('id', name);
+                 resultDiv = $("<div>");
+                $(resultDiv).attr('id', name);                
+                resultDiv.addClass("result");
                 resultDiv.append(`${object.name}  |  ${object.address} `);
                 resultDiv.append(resultButton);
                 return resultDiv;
-
-
-
-
             }
-
-
-            
-
 
             function initializeRows(){
                 resultsContainer.empty();
@@ -162,20 +121,8 @@
                 }
                 resultsContainer.append(rowsToAdd);
             }
-
-            
-
-
-
-
-
-
-
-
-
         }) 
     })
-
 
     function generateNames (arr){
         var newArr = [];

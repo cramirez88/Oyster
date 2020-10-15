@@ -287,6 +287,17 @@ label #cancel {
   padding-left: 55px;
 }
 
+#resultsContainer{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.result{
+  margin: 15px;
+  color:white;
+  font-size: 20px;
+}
+
 h1 {
   padding-bottom: 20px;
   font-family: 'Noto Sans TC', sans-serif;
