@@ -50,6 +50,7 @@ h1 {
 
 #sidebar {
   position: fixed;
+  left: -250px;
   width: 15%;
   height: 100%;
   background: #06b0ce ;
@@ -70,8 +71,7 @@ h1 {
   border-radius: 10px;
 
 }
-ul li {
-}
+
 ul li:hover a {
   padding-left: 50px;
 }
@@ -104,7 +104,7 @@ label #cancel {
   padding: 4px 9px;
   transition: all .5s ease;
 }
-#check:checked ~ .sidebar {
+#check:checked ~ #sidebar {
   left: 0;
 }
 #check:checked ~ label #btn {
