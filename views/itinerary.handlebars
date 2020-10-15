@@ -1,15 +1,22 @@
-<div class ="container">
+
+<div class="container-fluid">
     <div class="row">
         <!--HEADER-->
         <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="row">
-            
+                <div class="row">
+                    <header id="masthead">
+                        <div class="container" id="titlehead"></div>
+                            <h1>ITINERARY</h1>   
+                        </div>
+                    </header>
+                </div>
 
                 <!--TIME BLOCKS-->
                 {{#dates}}
                     <div class="container">
                         <div id="title" class="row title-block">
-                            <h2 id="dayTitle">{{this.date}}</h2>
+                            <h2 data-id="{{id}}" id="dayTitle">{{this.date}}</h2>
                         </div>
                         <div id="9" class="row time-block">
                             <div class="col-md-1 hour">9AM</div>

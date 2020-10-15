@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, height=device-height"/>			{{!-- testing below for date picker --}}
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  		<link href="/stylesheets/style.css" rel="stylesheet">
 		{{!-- testing below for date picker --}}
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
@@ -16,36 +16,43 @@
 		<title>Oyster App</title>
 	</head>
 	<body>
-		<div id="row">
-            <!--HEADER-->
-            <header id="masthead">
-                <div class="container" id="titlehead"></div>
-                    <h1>THE WORLD IS YOUR OYSTER</h1>   
-                </div>
-            </header>
+		<div class="container-fluid">
+			<div class="row">
+            	<!--HEADER-->
+				<header id="masthead">
+					<div class="container-fluid" id="titlehead">
+						<h1>THE WORLD IS YOUR OYSTER</h1>   
+						<!--SIDEBAR: DO NOT REMOVE-->
+					</div>
+				</header>
+			</div>
 		</div>
-
-	<!--SIDEBAR: DO NOT REMOVE-->
-	<input type="checkbox" id="check">
-	<label for="check">
-		<i class="fas fa-bars" id="btn"></i>
-		<i class="fas fa-times" id="cancel"></i>
-	</label>
-	<div class="col-sm-3 col-md-2 sidebar" id="sidebar">
-		<h2><a href="/members" id="logo">OYSTER</a></h2>
-		<p>Welcome <span class="member-name">{{user.email}}!</span></p>
-		<ul class="nav nav-sidebar">
-		<li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
-		<li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
-		<li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-		<li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
-		<li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
-		</ul>
-
-	</div>
+		<div class="container-fluid" id="adventureContainer">
+			<input type="checkbox" id="check">
+			<label for="check">
+				<i class="fas fa-bars" id="navBtn"></i>
+				<i class="fas fa-times" id="cancel"></i>
+			</label>
+			<div class="col-sm-4 sidebar" id="sidebar">
+				<h2><a href="/members" id="logo">OYSTER</a></h2>
+				<p>Welcome <span class="member-name">{{user.email}}!</span></p>
+				<ul class="nav nav-sidebar">
+				<li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+				<li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+				<li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+				<li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+				<li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+				</ul>
+			</div>
+		</div>
 		<!--BODY-->
 		{{{ body }}}
-	</div>
+
+		<footer>
+			<div class="container-fluid" id="footer">
+			&copy; SHUCKED BY GROUP 4
+			</div>
+		</footer>
 	</body>
 	<!-- this made the errors about moment go away -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>

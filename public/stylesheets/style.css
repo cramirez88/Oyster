@@ -1,12 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
-
 body {
   background-image: url(../img/waves.png);
 }
+
 .container {
   position: fixed;
+  min-width: 00px;
+  max-width: 1600px;
+  margin-top: 100px;
+  margin-right: 500vw;
+  height: 100vh;
+  width: 100vw;
 }
+
+.container-fluid {
+  width: 100%;
+  max-width: 1600px;
+  height: fit-content;
+  max-height: 20px;
+  margin: 0 auto;
+  clear: both;
+}
+
 /* Addresses Masthead Overflow */
 #primary{
   padding-top:200px;
@@ -44,32 +60,40 @@ h1 {
   font-size: 150px;
 }
 
-#introContainer {
-  height: 80%;
-  width: 60%;
+.introContainer {
+  float: left;
+  width: 600px;
+  max-width: 600px;
+  margin-top: -400px;
+  padding-top: -400px;
+  padding: 30px;
+  margin: 0 0 40px;
   background-color: #f7cf61;
   color: #f7cf61;
-  padding-top: 5%;
   border: 10px solid #f7cf61;
   position: relative;
+  text-align: center;
 
 }
 
 #introImage {
-  border: #f7cf61;
+  max-height: 500px;
+  max-width: 555px;
+  margin: 0px 20px 10px 0px
+}
+
+#beginBtn {
+  align-self: center;
   position: relative;
-  padding-left: 45px;
-  align-content: center;
-  width: 500px;
-  height: 500px;
-  margin: 0px 20px 10px 0px;
 }
 
 #masthead {
   position: relative;
   height: 150px;
   width: 100%;
-  margin-left: 15%
+  min-width: 85%;
+  max-width: 100%;
+
   overflow: auto;
   background-color: white;
   border-color: #f7cf61;
@@ -77,14 +101,32 @@ h1 {
   overflow: hidden;
 }
 
-#sidebar {
-  position: fixed;
-  left: -250px;
-  width: 15%;
-  height: 100%;
+#titlehead {
+}
+
+.sidebar {
+  position: relative;
+  margin-top: 130px;
+  margin-left: none;
+  max-width: 25%;
+  width: 20%;
+  height: 100vh;
+  max-height: 100%;
   background: #06b0ce ;
   opacity: 30%;
-  transition: all .5s ease;
+  transition: all .3s ease;
+  z-index: 1111;
+}
+
+/*DO NOT CHANGE*/
+#sidebar {
+  position: relative;
+  width: 20%;
+  height: 200vh;
+  max-height: max-content;
+  background: #06b0ce ;
+  opacity: 30%;
+  transition: all .3s ease;
   z-index: 1111;
 }
 #sidebar:hover {
@@ -94,37 +136,64 @@ h1 {
 }
 
 #logo {
+  max-width: fit-content;
   font-size: 45px;
   background-color: white;
   opacity: 500%;
   border-radius: 10px;
 
 }
-
+ul li {
+}
 ul li:hover a {
   padding-left: 50px;
 }
+
 .sidebar ul a i {
   margin-right: 16px;
 }
+
+#navBtn {
+  position: relative;
+  margin-left: none;
+}
+
+#navBtn::before{
+  position: relative;
+  background: #4682b4;
+  margin: none;
+
+}
+#navBtn::after{
+  border: 3px #4682b4;
+  position: relative;
+}
+.checkbox {
+  position: fixed;
+}
 #check {
+  position: fixed;
   display: none;
 }
-label #btn, label #cancel {
-  position: absolute;
-  cursor: pointer;
+label #navBtn, label #cancel {
+  position: relative;
+  cursor: pointer;  
   background: #4682b4;
-  border-radius: 3px;
+  border: 3px #4682b4;
 } 
-label #btn {
-  left: 40px;
+#navBtn {
+  border: 3px #4682b4;
+  position: relative;
+  left: -175px;
   top: 25px;
   font-size: 35px;
+  background: #4682b4;
   color: white;
   padding: 6px 12px;
   transition: all .5s;
 }
 label #cancel {
+  position: fixed;
   z-index: 2222;
   left: -195px;
   top: 17px;
@@ -133,16 +202,21 @@ label #cancel {
   padding: 4px 9px;
   transition: all .5s ease;
 }
-#check:checked ~ #sidebar {
+#check:checked ~ .sidebar {
   left: 0;
+  position: fixed;
 }
-#check:checked ~ label #btn {
+#check:checked ~ label #navBtn {
   left: 250px;
   opacity: 0;
-  pointer-events: none;
+  border: 3px #4682b4;
+  background: #4682b4;
+  pointer-events: pointer;
+  position: relative;
 }
 #check:checked ~ label #cancel {
-  left: 195px;
+  left: 250px;
+  position: relative;
 }
 
 /*LOGIN & SIGNIN PAGE*/
@@ -171,6 +245,7 @@ label #cancel {
 .card-body {
   background-color:  #044766;
   font-size: 20px;
+  width: 25vw;
 }
 
 .card-title {
@@ -182,8 +257,11 @@ label #cancel {
 
 }
 
+
 #card-section {
-  padding-top: 100px;
+  padding-top: 0px;
+  padding-left: 20%;
+  margin-top: 0px;
 }
 
 #plus {
@@ -201,6 +279,27 @@ label #cancel {
   left: 90%;
 }
 
+footer {
+  padding: 30px 0;
+  clear: both;
+  font-size: 12px;
+  position: relative;
+  height: 30%;
+  width: 110%;
+  max-width: 110%;
+  margin-top: 700px;
+  margin-left: 0;
+  margin-right: 0;
+  color: #fff;
+  color: #ccc;
+  text-align: center;
+  background: #044766;
+  border-top: 8px solid #4682b4;
+}
+
+#footer {
+  position: relative;
+}
 /*STYLING FOR ITINERARY PAGE*/
 #adInput {
   background: transparent;
@@ -261,30 +360,34 @@ label #cancel {
 }
 /*CREATE PAGE*/
 #createContainer {
-  width: 40%;
+  width: 60%;
   color: #f7cf61;
   padding-top: 5%;
 }
 /*STYLING FOR GOOGLE MAPS*/
-#mapContainer {
+.mapContainer {
   padding-top: 10px;
   align-content: center;
+  position: relative;
 }
 
 #map {
   height: 400px;
   width: 100%;
+  max-width: 80%;
+  margin-left: 20%;
   display: flex;
   justify-content: center;
   align-self: center;
-  top: 150px;
+  top: 50px;
 }
 
 /*STYING FOR SEARCH BUTTONS */
 #citysearch {
-  margin-top: 200px;
-  margin-left: 50px;
-  padding-left: 55px;
+  margin-top: 100px;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding-left: 20%;
 }
 
 #resultsContainer{
@@ -306,19 +409,137 @@ h1 {
   color: #4682b4;
   text-align: center;
 }
-@media (min-width: 544px) {  
-  h1 {font-size:3.5rem;} /*1rem = 16px*/
-}
-/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {  
-  h1 {font-size:4.5rem;} /*1rem = 16px*/
-}
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { 
-  h1 {font-size:5.5rem;} /*1rem = 16px*/
-}
+
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {  
-  h1 {font-size:6rem;} /*1rem = 16px*/    
+@media only screen and (max-width: 1600px) and (min-width: 1200px) { 
+  h1 {
+    font-size:6rem;
+  } /*1rem = 16px*/  
+
+  .container-fluid {
+    max-width: 100%;
+    min-width: 100%;
+  }  
+
+  .introContainer {
+    max-width: 100%;
+  }
+
+  #introImage {
+    width: 95%;
+  }
+
+  #beginBtn {
+    align-self: center;
+    position: relative;
+  }
+
+  #masthead {
+    width: 100%;
+  }
+
+  .card {
+    width: fit-content;
+  }
 }
 
+/* Large devices (desktops, 992px and up) */
+@media only screen and (max-width: 1199px) and (min-width: 768px) { 
+  h1 {
+    font-size:5.5rem;
+  } /*1rem = 16px*/
+
+  .container-fluid {
+    max-width: 100%;
+  }
+
+  .introContainer {
+    max-width: fit-content;
+    min-width: fit-content;    
+  }
+
+  #introImage {
+    width: 95%;
+  }
+
+  #beginBtn {
+    align-self: center;
+    position: relative;
+  }
+
+  #masthead {
+    width: 100%;
+  }
+
+  .card {
+    width: fit-content;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media only screen and (max-width: 767px) and (min-width: 640px) {  
+  h1 {
+    font-size:4.5rem;
+  } /*1rem = 16px*/
+
+  .container-fluid {
+    max-width: 100%;
+  }
+
+  .introContainer {
+    max-width: fit-content;
+    min-width: fit-content;    
+  }
+
+  #introImage {
+    width: 95%;
+  }
+
+  #beginBtn {
+    align-self: center;
+    position: relative;
+  }
+
+  #masthead {
+    max-width: fit-content;
+    width: fit-content
+  }
+
+  .card {
+    width: fit-content;
+  }
+}
+
+@media only screen and (max-width: 639px) and (min-width: 0px){  
+  h1 {
+    font-size:3.5rem;
+  } /*1rem = 16px*/
+
+  .container-fluid{
+    max-width: 100%;
+  }
+
+  .introContainer {
+    max-width: fit-content;
+    min-width: fit-content;  
+
+  }
+
+  #introImage {
+    width: 95%;
+  }
+
+  #beginBtn {
+    align-self: center;
+    position: relative;
+  }
+
+  #masthead {
+    max-width: fit-content;
+    width: 100%;
+  }
+
+  .card {
+    width: fit-content;
+  }
+}
