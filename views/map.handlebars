@@ -31,8 +31,6 @@
 </div>        
    
 <script>
-
-
     var map;
     function initMap() {
         var options = {
@@ -57,30 +55,24 @@
             },
             dataType: "json"
         }).done(res => {
+
+            var latVal = res.response.venues[0].location.lat;
+            var lonVal = res.response.venues[0].location.lng;
+            var myLatlng = new google.maps.LatLng(latVal,lonVal);
+            var mapOptions = {
+            zoom: 8,
+            center: myLatlng
+            }
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
             var marker = new google.maps.Marker({
-                position: { lat: 41.8781, lng: -87.6298 },
-                map,
+                position: myLatlng
             });
-        
             marker.setMap(map);
-            console.log(res);
-
-            console.log("Coming from res.response", res.response);
-            console.log("geocode", res.response.geocode.where);
-            console.log("venues", res.response.venues);
-            console.log("venues [0]", res.response.venues[0]);
-            console.log("venues [0] name", res.response.venues[0].name);        
-            console.log("venues [0] address", res.response.venues[0].location.formattedAddress);
-
 
             var venueArr = generateNames(res.response.venues);
             console.log(venueArr);
-
-
-
         }) 
     })
-
 
     function generateNames (arr){
         var newArr = [];
@@ -95,8 +87,8 @@
         return newArr;
     }
 
-
 </script>
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAej4V036j9e3wm8Sb57mt-DWByyDadjA&callback=initMap&libraries=places&v=weekly"
