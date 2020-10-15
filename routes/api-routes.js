@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -50,36 +51,23 @@ module.exports = function(app) {
       });
     }
   });
-
-
-  app.get("/api/adventures/:id", (req, res)=>{
+  
+  app.get("/members", isAuthenticated, (req, res) => {
     db.Adventure.findAll({
+      raw: true,
       where: {
-        UserId: req.params.id
+        UserId: req.user.id
       },
-      include: db.User
     }).then(function(data) {
-      var adventures= [];
-      for (var i=0; i<data.length; i++){
-        adventureObj = {
-          UserId: data[i].UserId,
-          id: data[i].UserId,
-          title: data[i].title,
-          dateRange: data[i].dateRange,
-          description: data[i].description
-        }
-        adventures.push(adventureObj);
+      var user = {
+        id: req.user.id,
+        user: req.user.email,
+        adventures: data
       }
-      res.json(adventures);
+      res.render("index", user);
     });
-
-
-
-
   });
 
-  
-  
   //Route for sending a new adventure to the db
   app.post("/api/adventures", function(req, res) {
     var reqDate = req.body.startDate;
