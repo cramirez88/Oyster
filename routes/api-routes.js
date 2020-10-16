@@ -85,87 +85,48 @@ module.exports = function(app) {
     });
   });
 
-  //Route for calling all of the adventures saved in the db
-  app.get("/api/adventures/:id", (req, res)=>{
-    db.Adventure.findAll({
-      raw: true,
-      where: {
-        UserId: req.user.id
-      },
-    }).then(function(data) {
-      var user = {
-        id: req.user.id,
-        user: req.user.email,
-        adventures: data
-      }
-      res.render("index", user);
-    });
-  });
 
   //Route for sending a new adventure to the db
-  app.post("/api/adventures", function(req, res) {
-    var reqDate = req.body.startDate;
-    var reqRange = req.body.checkingDates;
+    app.post("/api/adventures", function(req, res) {
     var reqArray = req.body.sendingarray;
-
-    //Object holds values to create a new adventure entry
     var newAdventure = {
       title: req.body.title,
       dateRange: req.body.dateRange,
       description: req.body.description,
       UserId: req.body.UserId
     }
-
-    //YES YOU CAN SEE THIS 
-    console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqDate);
-    console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqRange);
-
- 
     db.Adventure.create(newAdventure)
-        .then(function(data){ 
+        .then(
+            function(data){ 
           var adData = data; 
           res.json(data); 
           return adData;
-        })
-        /*.then(function(adData){ 
-          for(var i=0; i<reqArray.length; i++){
-            var datval = reqArray[i];
-              var dateObj = {
-                  date: datval,
-                  am_8: "-", 
-                  am_9: "-", 
-                  am_10: "-", 
-                  am_11: "-", 
-                  pm_12: "-", 
-                  pm_1: "-", 
-                  pm_2: "-",  
-                  pm_3: "-",  
-                  pm_4: "-",
-                  pm_5: "-",  
-                  pm_6: "-",  
-                  pm_7: "-",  
-                  pm_8: "-",  
-                  pm_9: "-",  
-                  pm_10: "-",
-                  AdventureId: adData.id
-                }*/
-            db.Date.create(dateObj).then(function(dateData){console.log(dateData);})
-          } 
-        // //end of second then clause
-        );
-  //end of api post
-  
-
-
-
-
-
-
-
-
-
-
-
+        }).then(
+            function(adData){ 
+            for(var i=0; i<reqArray.length; i++){
+                var datval = reqArray[i];
+                var dateObj = {
+                    date: datval,am_8: "",
+                    am_9: "",
+                    am_10: "",
+                    am_11: "",
+                    pm_12: "",
+                    pm_1: "",
+                    pm_2: "",
+                    pm_3: "",
+                    pm_4: "",
+                    pm_5: "",
+                    pm_6: "",
+                    pm_7: "",
+                    pm_8: "",
+                    pm_9: "",
+                    pm_10: "",
+                    AdventureId: adData.id
+                    }
+                db.Date.create(dateObj).then(dateData=>{console.log(dateData);})
+            }  
+        });
+    });
 
 
   //end of exports  
