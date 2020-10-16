@@ -7,7 +7,7 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 //**ALL ROUTES WORKING, DO NOT ADJUST ANYTHING BELOW**
 module.exports = function(app) {
-  app.get("intro", (req, res) => {
+  app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/members");
@@ -17,7 +17,7 @@ module.exports = function(app) {
   app.get("/signup", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/signup");
+      res.redirect("/members");
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });

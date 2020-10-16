@@ -24,7 +24,7 @@ module.exports = function(app) {
       password: req.body.password,
     })
       .then(() => {
-        res.redirect(307, "/api/signup");
+        res.redirect(307, "/api/login");
       })
       .catch(err => {
         res.status(401).json(err);
@@ -34,7 +34,7 @@ module.exports = function(app) {
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
-    res.render("intro");
+    res.redirect("/");
   });
 
   // Route for getting some data about our user to be used client side
@@ -68,9 +68,9 @@ module.exports = function(app) {
     });
   });
 
-  //Route for calling dates from db
-  app.get("/api/dates/:id", (req, res)=>{
-    db.Date.findAll({
+
+  app.get("/api/adventures/:id", (req, res)=>{
+    db.Adventure.findAll({
       raw: true,
       where: {
         UserId: req.user.id
@@ -79,54 +79,76 @@ module.exports = function(app) {
       var user = {
         id: req.user.id,
         user: req.user.email,
-        dates: data
+        adventures: data
       }
-      res.render("itinerary", user);
+      res.render("index", user);
     });
   });
 
-
   //Route for sending a new adventure to the db
-    app.post("/api/adventures", function(req, res) {
+  app.post("/api/adventures", function(req, res) {
+    var reqDate = req.body.startDate;
+    var reqRange = req.body.checkingDates;
     var reqArray = req.body.sendingarray;
+
+    //Object holds values to create a new adventure entry
     var newAdventure = {
       title: req.body.title,
       dateRange: req.body.dateRange,
       description: req.body.description,
       UserId: req.body.UserId
     }
+
+    //YES YOU CAN SEE THIS 
+    console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqDate);
+    console.log("****CHECKING TO SEE IF YOU CAN SEE THIS", reqRange);
+
+ 
     db.Adventure.create(newAdventure)
-        .then(
-            function(data){ 
+        .then(function(data){ 
           var adData = data; 
           res.json(data); 
           return adData;
-        }).then(
-            function(adData){ 
-            for(var i=0; i<reqArray.length; i++){
-                var datval = reqArray[i];
-                var dateObj = {
-                    date: datval,am_8: "",
-                    am_9: "",
-                    am_10: "",
-                    am_11: "",
-                    pm_12: "",
-                    pm_1: "",
-                    pm_2: "",
-                    pm_3: "",
-                    pm_4: "",
-                    pm_5: "",
-                    pm_6: "",
-                    pm_7: "",
-                    pm_8: "",
-                    pm_9: "",
-                    pm_10: "",
-                    AdventureId: adData.id
-                    }
-                db.Date.create(dateObj).then(dateData=>{console.log(dateData);})
-            }  
+        })
+        .then(function(adData){ 
+          for(var i=0; i<reqArray.length; i++){
+            var datval = reqArray[i];
+              var dateObj = {
+                  date: datval,
+                  am_8: "-", 
+                  am_9: "-", 
+                  am_10: "-", 
+                  am_11: "-", 
+                  pm_12: "-", 
+                  pm_1: "-", 
+                  pm_2: "-",  
+                  pm_3: "-",  
+                  pm_4: "-",
+                  pm_5: "-",  
+                  pm_6: "-",  
+                  pm_7: "-",  
+                  pm_8: "-",  
+                  pm_9: "-",  
+                  pm_10: "-",
+                  AdventureId: adData.id
+                }
+            db.Date.create(dateObj).then(function(dateData){console.log(dateData);})
+          } 
+        // //end of second then clause
         });
-    });
+  //end of api post
+  });
+
+
+
+
+
+
+
+
+
+
+
 
 
   //end of exports  

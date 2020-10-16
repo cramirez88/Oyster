@@ -1,10 +1,18 @@
 
-<div class ="container-fluid">
+<div class ="container">
+
     <div class="row">
+
         <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
             <div class="row">
+
+
+                
+                    
                 <!--SEARCH FORM-->
-                <div class="container-fluid" id="mapContainer">
+                <div class="container" id="mapContainer">
                     <div class= "row">
                         <div id="map"></div>
                     </div>
@@ -35,12 +43,15 @@
                         </div>
                     </div>
                 </div>
+            
             </div>
         </div>
     </div>
-</div>       
-<script>
+</div>  
 
+
+
+<script>
     var map;
     function initMap() {
         var options = {
@@ -49,7 +60,6 @@
         }
         map = new google.maps.Map(document.getElementById('map'), options);
     }
-
     var resultsContainer = $("#resultsContainer");
     var FavoriteButton = $("button.favorite");
   
@@ -68,7 +78,6 @@
             },
             dataType: "json"
         }).done(res => {
-
             var latVal = res.response.venues[0].location.lat;
             var lonVal = res.response.venues[0].location.lng;
             var myLatlng = new google.maps.LatLng(latVal,lonVal);
@@ -81,10 +90,8 @@
                 position: myLatlng
             });
             marker.setMap(map);
-
             var venueArr = generateNames(res.response.venues);
             console.log(venueArr);
-
             initializeRows();
           
             function createNewRow(object){
@@ -99,7 +106,6 @@
                 resultDiv.append(resultButton);
                 return resultDiv;
             }
-
             function initializeRows(){
                 resultsContainer.empty();
                 var rowsToAdd= [];
@@ -111,7 +117,6 @@
             }
         }) 
     })
-
     function generateNames (arr){
         var newArr = [];
         for (var i=0; i<arr.length; i++){
@@ -124,11 +129,9 @@
         }
         return newArr;
     }
-
 </script>
 
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAej4V036j9e3wm8Sb57mt-DWByyDadjA&callback=initMap&libraries=places&v=weekly"
     type="text/javascript"></script>   
-
