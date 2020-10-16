@@ -16,8 +16,7 @@ body {
 
 .container-fluid {
   width: 100%;
-  max-width: 1600px;
-  height: fit-content;
+  max-width: 160px;
   max-height: 20px;
   margin: 0 auto;
   clear: both;
@@ -60,6 +59,7 @@ h1 {
   font-size: 150px;
 }
 
+
 .introContainer {
   float: left;
   width: 600px;
@@ -75,7 +75,6 @@ h1 {
   text-align: center;
 
 }
-
 #introImage {
   max-height: 500px;
   max-width: 555px;
@@ -235,6 +234,7 @@ label #cancel {
 .card {
   border: 10px solid #f7cf61;
   border-radius: 15px;
+  margin-top: 0px;
   width: 30%;
   height: 40%;
   font-size: 30px;
@@ -257,11 +257,10 @@ label #cancel {
 
 }
 
-
 #card-section {
   padding-top: 0px;
   padding-left: 20%;
-  margin-top: 0px;
+  margin-top: -1200px;
 }
 
 #plus {
@@ -419,8 +418,8 @@ h1 {
   .container-fluid {
     max-width: 100%;
     min-width: 100%;
+    max-height: min-content;
   }  
-
   .introContainer {
     max-width: 100%;
   }
@@ -489,6 +488,7 @@ h1 {
   .introContainer {
     max-width: fit-content;
     min-width: fit-content;    
+    max-height: inherit;
   }
 
   #introImage {
