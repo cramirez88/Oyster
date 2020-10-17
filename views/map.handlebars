@@ -1,43 +1,37 @@
-
-<div class ="container-fluid">
+<!--INTERACTIVE MAP-->
+<div class="col-smcontainer-fluid" id="mapContainer">
+    <div class= "row">
+        <div id="map"></div>
+    </div>
+    <!--SEARCH FORM-->
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="row">
-                <!--SEARCH FORM-->
-                <div class="container-fluid" id="mapContainer">
-                    <div class= "row">
-                        <div id="map"></div>
-                    </div>
-                    <div class="row">
-                        <div id="citysearch">
-                            <form id="search-form" action="#">
-                                <div class="form-group">
-                                    <label for="place" >Enter Place Here</label>
-                                    <input placeholder="Cafe" type="text" class="form-control form-control-lg" id="place">
-                                    <br>
-                                </div>
-                                <div class="form-group">
-                                    <label for="city">Enter City Here</label>
-                                    <input placeholder="Chicago" type="text" class="form-control form-control-lg" id="city"> 
-                                    <br>
-                                </div>
-                                <button id="searchBtn" class="btn btn-primary">Search</button>
-                                
-                            </form>
-                            <br>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
-                    {{!-- NEW --}}
-                    <div class="row">
-                        <div id= "resultsContainer">
-                        </div>
-                    </div>
+        <div id="citysearch">
+            <form id="search-form" action="#">
+                <div class="form-group">
+                    <label for="place" >Enter Place Here</label>
+                    <input placeholder="Cafe" type="text" class="form-control form-control-lg" id="place">
+                    <br>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="city">Enter City Here</label>
+                    <input placeholder="Chicago" type="text" class="form-control form-control-lg" id="city"> 
+                    <br>
+                </div>
+                <button id="searchBtn" class="btn btn-primary">Search</button>
+                
+            </form>
+            <br>
+            <br>
+            <br>
         </div>
     </div>
+    {{!-- NEW --}}
+    <div class="row">
+        <div id= "resultsContainer">
+        </div>
+    </div>
+</div>
+</div>
 </div>       
 <script>
 
