@@ -1,36 +1,23 @@
-<div class ="container-fluid">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <div class="row">
-            {{!-- <div class="row">
-                <!--HEADER-->
-                <header id="masthead">
-                    <div class="container" id="titlehead"></div>
-                        <h1>CREATE AN ADVENTURE</h1>   
-                    </div>
-                </header> --}}
 
-                <div class ="container" id="createContainer">
-                    <form id="adventure-form">
-                        <div class="form-group">
-                            <label for="title">Title:</label>
-                            <input placeholder="Paris Je t'aime" type="text" class="form-control form-control-lg" id="title"> 
-                            <br>
-                            <label for="description">Description:</label>
-                            <textarea class="form-control" rows="3" id="description" ></textarea>
-                            <div class="form group">
-                                <label for="calendar">Select Your Dates</label>
-                                <input class="form-control" type="text" id="daterange" name="datefilter" value="" />
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-primary" id="newItSub">Submit</button>
-                            <button type="cancel" onclick="location.href='/members'" class="btn btn-primary" id="cancelBtn">Cancel</button>
-                        </div>
-                    </form>
-                </div>  
-            </div>   
-        </div>  
-    </div>     
+<div class ="container-fluid">
+    <div class ="container-fluid" id="createContainer">
+        <form id="adventure-form">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input placeholder="Paris Je t'aime" type="text" class="form-control form-control-lg" id="title"> 
+                <br>
+                <label for="description">Description:</label>
+                <textarea class="form-control" rows="3" id="description" ></textarea>
+                <div class="form group">
+                    <label for="calendar">Select Your Dates</label>
+                    <input class="form-control" type="text" id="daterange" name="datefilter" value="" />
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary" id="newItSub">Submit</button>
+                <button type="cancel" onclick="location.href='/members'" class="btn btn-primary" id="cancelBtn">Cancel</button>
+            </div>
+        </form>
+    </div>  
 </div>       
 
 <script type="text/javascript">

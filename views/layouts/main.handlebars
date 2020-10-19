@@ -16,8 +16,8 @@
 		<title>Oyster App</title>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div class="row">
+		<div class="page-container" id="container-fluid">
+			<div class="content-wrap">
             	<!--HEADER-->
 				<header id="masthead">
 					<div class="container-fluid" id="titlehead">
@@ -25,34 +25,35 @@
 						<!--SIDEBAR: DO NOT REMOVE-->
 					</div>
 				</header>
+					<div class="col-sm">
+						<div class="sidebar">
+							<input type="checkbox" id="check">
+							<label for="check">
+								<i class="fas fa-bars" id="navBtn"></i>
+							</label>
+							<div class="col-sm-4 sidebar" id="sidebar">
+								<h2><a href="/members" id="logo">OYSTER</a></h2>
+								<p>Welcome <span class="member-name">{{user.email}}!</span></p>
+								<ul class="nav nav-sidebar">
+								<li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
+								<li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
+								<li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
+								<li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
+								<li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
+								</ul>
+							</div>
+						</div>
+					<!--BODY-->
+					{{{ body }}}
+					<div class="col-sm">
+						<footer>
+							<div class="container-fluid" id="footer">
+							&copy; SHUCKED BY GROUP 4
+							</div>
+						</footer>
+				</div>
 			</div>
 		</div>
-		<div class="container-fluid">
-			<input type="checkbox" id="check">
-			<label for="check">
-				<i class="fas fa-bars" id="navBtn"></i>
-				<i class="fas fa-times" id="cancel"></i>
-			</label>
-			<div class="col-sm-4 sidebar" id="sidebar">
-				<h2><a href="/members" id="logo">OYSTER</a></h2>
-				<p>Welcome <span class="member-name">{{user.email}}!</span></p>
-				<ul class="nav nav-sidebar">
-				<li><a href="/members"><i class="fas fa-user-tie"></i>Profile</a></li>
-				<li><a href="/map"><i class="fas fa-search"></i>Search</a></li>
-				<li><a href="#"><i class="fas fa-heart"></i>Favorites</a></li>
-				<li><a href="/create"><i class="fas fa-heart"></i>New Adventure</a></li>
-				<li><a href="/logout"><i class="fas fa-heart"></i>Logout</a></li>
-				</ul>
-			</div>
-		</div>
-		<!--BODY-->
-		{{{ body }}}
-
-		<footer>
-			<div class="container-fluid" id="footer">
-			&copy; SHUCKED BY GROUP 4
-			</div>
-		</footer>
 		<!-- this made the errors about moment go away -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
