@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Simple Overlay jQuery Plugin Example</title>
+<link href="css/simple-overlay.css" rel="stylesheet">
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<style>
+  body { font-family: 'Open Sans'; }
+  .container { background-image: 'images/waves.png'; max-width: 100%; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>The World Is Your Oyster</h1>
+    
+<div style="margin:30px auto"><script type="text/javascript">
+
+ 
+</script>
+</script>
+<div id="container" class = 'container-overlay'>
+ 
+  <img src="images/voy2.png" alt="A fancy aesthetic" style="border: 10; border-color: goldenrod;">
+  
+ 
+
+  <button id="random-button" class="btn btn-primary btn-lg fa fa-question">Begin your Journey!</button>
+
+  
+</div>
+
+<h1 class="text-center" id="random-quote"></h1>
+
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="js/simple-overlay.js"></script>
+<script>
+  $('body').simpleOverlay({
+  background: 'images/waves.png',
+  content: 
+  '<h2>Click Anywhere To Start</h2><img src="images/voy2.png" alt="A fancy aesthetic" style="border: 10; border-color: goldenrod;">'
+
+
+
+  });
+</script>
+<script type="text/javascript">
+
+
+  
+
+</script>
+
+</script>
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+    $(document).ready(function(){
+
+$("#random-button").on("click", function() {
+
+
+
+var quotes = ["Adventure is worthwhile in itself. - Amelia Earheart",
+"Life is either a daring adventure or nothing. - Hellen Keller ",
+"People don’t take trips, trips take people. -John Steinbeck",
+"To live would be an awfully big adventure.– J.M. Barrie, Peter Pan",
+"There are far better things ahead than the ones we leave behind. – C.S. Lewis",
+"If we were meant to stay in one place, we’d have roots instead of feet. – Rachel Wolchin",
+"You can’t find happiness at the end of your journey if you didn’t bring it with you all along. – Katrina Mayer",
+"Life is a blank canvas, and you need to throw all the paint on it you can. – Danny Kaye",
+"The path is the goal -Mahatma Gandhi",
+"Oh, the places you’ll go. – Dr. Seuss",
+"Have love, will travel. - The Sonics"
+];
+
+
+    
+var ranQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+$("#random-quote").text(ranQuote);
+
+
+
+});
+
+});
+
+
+    </script>
+
+</body>
+</html>
